@@ -1,0 +1,24 @@
+//
+//  ThreeModel.m
+//  GTOOL
+//
+//  Created by tg on 2020/12/24.
+//
+
+#import "ThreeModel.h"
+
+@implementation ThreeModel
+//+(NSString*)getTableName{
+//
+//    return @"DBUserInfoModel_Name_ThreeModel";
+//}
+//+(Class)getClassModel{
+//    return  [ThreeModel class];
+//}
+//+(NSArray<NSString*>*)excludedProperties{
+//    return @[@"aaa",@"userIDSString"];
+//}
+//+(NSString*)queryDBWeherMark{
+//    return @"userIDSString";
+//}
+@end
