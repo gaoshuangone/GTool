@@ -74,7 +74,7 @@ static NSObject* model ;
 //
 //
 //
-//    DBManger* db = [DBManger shared];
+//    GDBManger* db = [GDBManger shared];
 
 //    SecondModel* model2 = [[SecondModel alloc]init];
 //    model2.userID = @"2222";

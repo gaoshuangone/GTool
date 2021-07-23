@@ -6,10 +6,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DBMangerProtocol.h"
+#import "GDBMangerProtocol.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GArchiveModel : NSObject<NSCoding,DBMangerProtocol>
+@interface GArchiveModel : NSObject<NSCoding,GDBMangerProtocol>
 @property (strong, nonatomic)NSMutableArray* archiveArray;
 @property (strong, nonatomic)NSMutableDictionary* archiveDict;
 

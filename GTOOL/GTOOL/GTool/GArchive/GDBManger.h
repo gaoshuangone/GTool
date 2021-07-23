@@ -1,5 +1,5 @@
 //
-//  DBManger.h
+//  GDBManger.h
 //  GTOOL
 //
 //  Created by tg on 2020/12/24.
@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "NSObject+GObject.h"
-#import "DBMangerProtocol.h"
+#import "GDBMangerProtocol.h"
 @class GArchiveModel;
 NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSInteger, ArchiveType){
@@ -28,7 +28,7 @@ typedef NS_ENUM(NSInteger, ArchiveType){
 
 
 
-@interface DBManger : NSObject<GHelperProtocol>
+@interface GDBManger : NSObject<GHelperProtocol>
 
 @property (strong,readonly, nonatomic)Class dbModelClass;
 @property (strong,readonly, nonatomic)id dbShard;

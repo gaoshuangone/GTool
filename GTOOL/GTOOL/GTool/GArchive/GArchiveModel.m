@@ -8,9 +8,9 @@
 #import "GArchiveModel.h"
 #import <objc/runtime.h>
 #import "NSObject+GObject.h"
-#import "DBManger.h"
+#import "GDBManger.h"
 
-static DBManger * dbManger = nil;
+static GDBManger * dbManger = nil;
 @interface GArchiveModel()
 @property(strong, nonatomic)NSMutableArray* array_Temp;
 
@@ -19,7 +19,7 @@ static DBManger * dbManger = nil;
 GHELPER_SHARED(GArchiveModel)
 -(instancetype)init{
     if (self = [super init]) {
-        dbManger = [DBManger shared];
+        dbManger = [GDBManger shared];
     }
     return self;
 }

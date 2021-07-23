@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class GArchiveModel;
 /// 多张表需要多个模型，需要重新实现协议
-@protocol DBMangerProtocol <NSObject>
+@protocol GDBMangerProtocol <NSObject>
 @optional
 /// 生成表名 需要跟用户对应起来
 +(NSString*)getTableName;
