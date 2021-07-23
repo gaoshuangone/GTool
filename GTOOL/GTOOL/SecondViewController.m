@@ -8,20 +8,7 @@
 #import "SecondViewController.h"
 #import "DBUserInfoModel.h"
 #import "ThreeModel.h"
-typedef NS_ENUM(NSInteger, ArchiveType111){
-    ///DBArchiveModel
-    kType_Archive_Model111=0,
-    
-    
-    ///DBArchiveModel_dict
-    kType_Archive_Dict111=10,
 
-    
-    
-    ///DBArchiveModel_array
-    kType_Archive_Array11=100,
-    
-};
 @interface SecondViewController ()
 
 @property (strong, nonatomic)GCDTimer*  timerGCD;
@@ -50,7 +37,7 @@ static NSObject* model ;
 //        [weakSelf.navigationController popViewControllerAnimated:YES];
 
     }];
-//    [self testDB];
+    [self testDB];
 //    [self testAlert];
 //    [self testDate];
 //    [self testGCD];
@@ -132,7 +119,7 @@ static NSObject* model ;
 
 -(void)testArchiveNew{
     
-//    SecondModel* model1 =   [GDBManger archiveGetWithClass:[SecondModel class]];
+    SecondModel* model1 =   [GDBManger archiveGetWithClass:[SecondModel class]];
 //
 //    model1.userID = @"1111";
 //
@@ -145,12 +132,12 @@ static NSObject* model ;
 //
 //
 //
-//    SecondModel* model3 = [GDBManger archiveUpdateWithClass:[SecondModel class] wtihBlock:^(__kindof GArchiveModel * _Nonnull modelSub) {
+//    SecondModel* model3 = [GDBManger archiveUpdateWithClass:[SecondModel class] wtihBlock:^(__kindof GModel * _Nonnull modelSub) {
 //        SecondModel* model = modelSub;
 //        model.userID = @"222222";
 //    }];
     
-//    ThreeModel* model4 = [GDBManger archiveUpdateWithClass:[ThreeModel class] wtihBlock:^(__kindof GArchiveModel * _Nonnull modelSub) {
+//    ThreeModel* model4 = [GDBManger archiveUpdateWithClass:[ThreeModel class] wtihBlock:^(__kindof GModel * _Nonnull modelSub) {
 //        ThreeModel* model = modelSub;
 //        model.userID = @"222222";
 //    }];
@@ -160,12 +147,12 @@ static NSObject* model ;
 //        model.userID = @"555";
 //    }];
     
-//    ThreeModel* model4 = [GDBManger archiveWithClass:[ThreeModel class] wtihUpdateBlock:^(__kindof GArchiveModel * _Nonnull modelSub) {
+//    ThreeModel* model4 = [GDBManger archiveWithClass:[ThreeModel class] wtihUpdateBlock:^(__kindof GModel * _Nonnull modelSub) {
 //        ThreeModel* model = modelSub;
 //        model.userID = @"4444";
 //    }];
 //
-//    ThreeModel* model5 = [GDBManger archiveUpdateWithClass:[ThreeModel class] wtihBlock:^(__kindof GArchiveModel * _Nonnull modelSub) {
+//    ThreeModel* model5 = [GDBManger archiveUpdateWithClass:[ThreeModel class] wtihBlock:^(__kindof GModel * _Nonnull modelSub) {
 //        ThreeModel* model = modelSub;
 //        model.userID = @"222222";
 //    }];

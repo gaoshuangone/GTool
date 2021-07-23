@@ -8,7 +8,7 @@
 #import "GDBManger.h"
 #import "YIIFMDB.h"
 #import "NSObject+GObject.h"
-#import "GArchiveModel.h"
+#import "GModel.h"
 #define kUserDefaultsKey(keyString) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.data",keyString]]
 
 #define DBKEY @"DBKEY"
@@ -20,31 +20,32 @@ static YIIFMDB *_dbShard = nil;
 
 @implementation GDBManger
 GHELPER_SHARED(GDBManger)
-+(GArchiveModel*)archiveGetWithType:(ArchiveType)type{
++(GModel*)archiveGetWithClass:(Class)classModel{
     
-    NSString* key =[DBKEY stringByAppendingFormat:@"_%ld",(long)type];
+    NSString* key =[DBKEY stringByAppendingFormat:@"_%@",[classModel g_setArchiveMarker]];
     id  data  = [NSKeyedUnarchiver unarchiveObjectWithFile:kUserDefaultsKey(key)];
     return data;
 
 }
-+(void)archiveDelWithType:(ArchiveType)type{
+
+
+
++(void)archiveDelWithClass:(Class)classModel{
     NSError* error = [[NSError alloc]init];
-    NSString* key =[DBKEY stringByAppendingFormat:@"_%ld",(long)type];
+    NSString* key =[DBKEY stringByAppendingFormat:@"_%@",[classModel g_setArchiveMarker]];
     [[NSFileManager defaultManager] removeItemAtPath:kUserDefaultsKey(key) error:&error];
     if (error.userInfo) {
 //        NSLog(@"_NSKeyedArchiver删除数据失败");
     }
 
 }
-+(__kindof GArchiveModel *)archiveUpdateWithType:(ArchiveType)type withClass:(Class)dbModel wtihBlock:(void (^)(__kindof GArchiveModel* modelSub))block;{
-    NSString* key =[DBKEY stringByAppendingFormat:@"_%ld",(long)type];
 
-  id  data = [self archiveGetWithType:type];
-    if (!data && dbModel) {
-        data = [[dbModel alloc] init];
-        GArchiveModel* model = data;
-        model.archiveArray = @[].mutableCopy;
-        model.archiveDict = @{}.mutableCopy;
++(__kindof GModel *)archiveWithwithClass:(Class)classModel wtihBlock:(void (^)(__kindof GModel* modelSub))block{
+    NSString* key =[DBKEY stringByAppendingFormat:@"_%@",[classModel g_setArchiveMarker]];
+
+  id  data = [self archiveGetWithClass:classModel];
+    if (!data && classModel) {
+        data = [[classModel alloc] init];
     }
 
     if (block) {
@@ -59,7 +60,7 @@ GHELPER_SHARED(GDBManger)
     if (data) {
         BOOL isSuccces =   [NSKeyedArchiver archiveRootObject:data toFile:kUserDefaultsKey(key)];
         if (!isSuccces) {
-            NSLog(@"%@_NSKeyedArchiver更新数据失败",dbModel);
+            NSLog(@"%@_NSKeyedArchiver更新数据失败",classModel);
 
         }
     }
@@ -81,7 +82,7 @@ GHELPER_SHARED(GDBManger)
         
         _dbShard = [YIIFMDB shareDatabase];
         [_dbShard inDatabase:^{
-            BOOL isSuccess =   [_dbShard createTableWithModelClass:[GDBManger shared].dbModelClass   excludedProperties:[[GDBManger shared].dbModelClass excludedProperties] tableName:[[GDBManger shared].dbModelClass getTableName]];
+            BOOL isSuccess =   [_dbShard createTableWithModelClass:[GDBManger shared].dbModelClass   g_excludedProperties:[[GDBManger shared].dbModelClass g_excludedProperties] tableName:[[GDBManger shared].dbModelClass g_setTableNameMarker]];
             if (!isSuccess) {
                 
             }
@@ -90,11 +91,11 @@ GHELPER_SHARED(GDBManger)
     return _dbShard;
 }
 
-+(void)insertWithModel:(GArchiveModel*)model{
++(void)insertWithModel:(GModel*)model{
     
     [GDBManger shared].dbModelClass = [model class];
     [[GDBManger shared].dbShard inTransaction:^(BOOL *rollback) {
-        BOOL isSuccess = [[GDBManger shared].dbShard insertWithModel:model tableName:[[GDBManger shared].dbModelClass getTableName]];  //插入一条数据
+        BOOL isSuccess = [[GDBManger shared].dbShard insertWithModel:model tableName:[[GDBManger shared].dbModelClass g_setTableNameMarker]];  //插入一条数据
         if (!isSuccess) {
             NSLog(@"******插入数据失败");
         }
@@ -103,34 +104,34 @@ GHELPER_SHARED(GDBManger)
     
     
 }
-+(void)insertWithModels:(NSArray<GArchiveModel*>*)models{
++(void)insertWithModels:(NSArray<GModel*>*)models{
     
     if (kISEmpty(models)) {
         return;
     }
     
-    GArchiveModel* model = models[0];
+    GModel* model = models[0];
     [GDBManger shared].dbModelClass = [model class];
 
     [[GDBManger shared].dbShard inTransaction:^(BOOL *rollback) {
         
         
-        [[GDBManger shared].dbShard insertWithModels:models tableName:[[GDBManger shared].dbModelClass getTableName]];  //插入一条数据
+        [[GDBManger shared].dbShard insertWithModels:models tableName:[[GDBManger shared].dbModelClass g_setTableNameMarker]];  //插入一条数据
     }];
     
     
 }
 
-+(void)delWithModel:(GArchiveModel*)model withORID:(NSString*)strID;
++(void)delWithModel:(GModel*)model withORID:(NSString*)strID;
 {
     [GDBManger shared].dbModelClass = [model class];
-    [[GDBManger shared].dbModelClass queryDBWeherMark];
+    [[GDBManger shared].dbModelClass g_setDBQueryMarker];
     kWeakSelf
     [[GDBManger shared].dbShard inTransaction:^(BOOL *rollback) {
         
         YIIParameters* par = [[YIIParameters alloc]init];
 
-        if (!kISEmpty([model valueForKey:[[GDBManger shared].dbModelClass queryDBWeherMark]])) {
+        if (!kISEmpty([model valueForKey:[[GDBManger shared].dbModelClass g_setDBQueryMarker]])) {
             [weakSelf setYIIParameters:par withModel:model];
 
         }else if(strID){
@@ -138,31 +139,31 @@ GHELPER_SHARED(GDBManger)
         }else{
             NSAssert(0, @"chekcQueryDBWeherMark");
         }
-      [[GDBManger shared].dbShard deleteFromTable:[[GDBManger shared].dbModelClass getTableName] whereParameters:par];  //插入一条数据
+      [[GDBManger shared].dbShard deleteFromTable:[[GDBManger shared].dbModelClass g_setTableNameMarker] whereParameters:par];  //插入一条数据
     
     }];
 }
 +(void)setYIIParameters:(YIIParameters*)par withValue:(id)value{
-    [par orWhere:[[GDBManger shared].dbModelClass queryDBWeherMark] value:value relationType:YIIParametersRelationTypeLike];
+    [par orWhere:[[GDBManger shared].dbModelClass g_setDBQueryMarker] value:value relationType:YIIParametersRelationTypeLike];
 }
-+(void)setYIIParameters:(YIIParameters*)par withModel:(GArchiveModel*)model{
-    [par orWhere:[[GDBManger shared].dbModelClass queryDBWeherMark] value:[model valueForKey:[[GDBManger shared].dbModelClass queryDBWeherMark]] relationType:YIIParametersRelationTypeLike];
++(void)setYIIParameters:(YIIParameters*)par withModel:(GModel*)model{
+    [par orWhere:[[GDBManger shared].dbModelClass g_setDBQueryMarker] value:[model valueForKey:[[GDBManger shared].dbModelClass g_setDBQueryMarker]] relationType:YIIParametersRelationTypeLike];
 }
 
-+(NSArray<GArchiveModel*>*)queryFromTableWithMarkClass:(Class)class;
++(NSArray<GModel*>*)queryFromTableWithMarkClass:(Class)class;
 {
     __block NSArray* array  = nil;
     
     [[GDBManger shared].dbShard  inDatabase:^{
         
-        array = [[GDBManger shared].dbShard queryFromTable:[[GDBManger shared].dbModelClass getTableName] model:class whereParameters:nil];
+        array = [[GDBManger shared].dbShard queryFromTable:[[GDBManger shared].dbModelClass g_setTableNameMarker] model:class whereParameters:nil];
         NSLog(@"FMDB储存的数据为%@",array );
         
     }];
     return array;
     
 }
-+(NSArray<GArchiveModel*>*)queryFromTableWithIDArray:(NSArray<NSString*>*)idArray withMarkClass:(nonnull Class)class {
++(NSArray<GModel*>*)queryFromTableWithIDArray:(NSArray<NSString*>*)idArray withMarkClass:(nonnull Class)class {
     [GDBManger shared].dbModelClass = class;
     
     __block NSArray* array  = nil;
@@ -177,7 +178,7 @@ GHELPER_SHARED(GDBManger)
             [self setYIIParameters:par withValue:strId];
         }
        [[GDBManger shared].dbShard  inDatabase:^{
-        array = [[GDBManger shared].dbShard queryFromTable:[[GDBManger shared].dbModelClass getTableName] model:[[GDBManger shared].dbModelClass class] whereParameters:par];
+        array = [[GDBManger shared].dbShard queryFromTable:[[GDBManger shared].dbModelClass g_setTableNameMarker] model:[[GDBManger shared].dbModelClass class] whereParameters:par];
            [arrayTemp addObjectsFromArray:array];
         }];
         NSLog(@"FMDB储存的数据为%@",array );
@@ -187,7 +188,7 @@ GHELPER_SHARED(GDBManger)
     
 }
 
-+(void)updateWithModel:(GArchiveModel*)model{
++(void)updateWithModel:(GModel*)model{
     
     [GDBManger shared].dbModelClass = [model class];
 
@@ -198,7 +199,7 @@ GHELPER_SHARED(GDBManger)
         YIIParameters* parameters = [[YIIParameters alloc]init];
         [self setYIIParameters:parameters withModel:model];
      
-        [[GDBManger shared].dbShard deleteFromTable:[[GDBManger shared].dbModelClass getTableName] whereParameters:parameters];
+        [[GDBManger shared].dbShard deleteFromTable:[[GDBManger shared].dbModelClass g_setTableNameMarker] whereParameters:parameters];
 
         [[GDBManger shared].dbShard inDatabase:^{
             [self insertWithModel:model];
@@ -214,7 +215,7 @@ GHELPER_SHARED(GDBManger)
 //    YIIParameters* parameters = [[YIIParameters alloc]init];
 //    [parameters andWhere:@"userIDString" value:model.userIDString relationType:YIIParametersRelationTypeEqualTo];
 //    [[GDBManger shared].dbShard inTransaction:^(BOOL *rollback) {
-//        [[GDBManger shared].dbShard updateTable:[self getTableName] dictionary:@{@"friend_type": @(model.friend_type)} whereParameters:parameters];
+//        [[GDBManger shared].dbShard updateTable:[self g_setTableNameMarker] dictionary:@{@"friend_type": @(model.friend_type)} whereParameters:parameters];
 //    }];
     
     
@@ -225,7 +226,7 @@ GHELPER_SHARED(GDBManger)
     [self queryFromTableWithMarkClass:[GDBManger shared].dbModelClass];
 }
 
-+(BOOL)isContainsWith:(GArchiveModel*)model{
++(BOOL)isContainsWith:(GModel*)model{
     
     [GDBManger shared].dbModelClass = [model class];
 
@@ -234,7 +235,7 @@ GHELPER_SHARED(GDBManger)
     [self setYIIParameters:parameters withModel:model];
     __block NSInteger count = 0;
     [[GDBManger shared].dbShard  inDatabase:^{
-        count =  [[GDBManger shared].dbShard numberOfItemsFromTable:[[GDBManger shared].dbModelClass getTableName] whereParameters:parameters];
+        count =  [[GDBManger shared].dbShard numberOfItemsFromTable:[[GDBManger shared].dbModelClass g_setTableNameMarker] whereParameters:parameters];
         
     }];
     if (count !=0) {

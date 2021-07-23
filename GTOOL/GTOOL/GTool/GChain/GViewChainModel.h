@@ -21,10 +21,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef void(^TapBlock)(void);
 
+/// 第三方
 @interface UIView (GChain)
 
 -(GViewChainModel *)g_chain;
 
--(void)gs_addTapAction:(TapBlock)block;
+///添加响应事件
+-(void)g_addTapAction:(TapBlock)block;
+
+//复制一个view
+-(UIView*)g_copyView:(UIView*)view;
 @end
 NS_ASSUME_NONNULL_END

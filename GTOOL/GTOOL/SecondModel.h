@@ -5,11 +5,11 @@
 //  Created by tg on 2020/12/24.
 //
 
-#import "GArchiveModel.h"
+#import "GModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SecondModel : GArchiveModel
+@interface SecondModel : GModel
 @property(strong, nonatomic)NSString* aaa;
 @property(strong, nonatomic)NSString* userID;
 

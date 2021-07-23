@@ -8,17 +8,17 @@
 #import "ThreeModel.h"
 
 @implementation ThreeModel
-+(NSString*)getTableName{
++(NSString*)g_setTableNameMarker{
 
     return @"DBUserInfoModel_Name_ThreeModel";
 }
-+(Class)getClassModel{
++(Class)g_setClassModelMarker{
     return  [ThreeModel class];
 }
-+(NSArray<NSString*>*)excludedProperties{
++(NSArray<NSString*>*)g_excludedProperties{
     return @[@"aaa",@"userIDSString"];
 }
-+(NSString*)queryDBWeherMark{
++(NSString*)g_setDBQueryMarker{
     return @"userIDSString";
 }
 @end

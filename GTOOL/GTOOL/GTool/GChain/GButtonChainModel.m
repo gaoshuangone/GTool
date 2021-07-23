@@ -228,7 +228,7 @@ G_CHAIN_BUTTON_IMPLEMENTATION(highlighted,setHighlighted,BOOL);
     }
 }
 #pragma mark - 设置图片位置
--(UIButton*)gs_setButtonImagePosition:(GButtonImagePosition)position spacing:(CGFloat)spacing
+-(UIButton*)g_setButtonImagePosition:(GButtonImagePosition)position spacing:(CGFloat)spacing
 {
     
    // 1. 得到imageView和titleLabel的宽、高

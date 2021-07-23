@@ -21,7 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 +(NSArray<NSString*>*)excludedProperties;
 ///表中增删改查，需要的标示，表示要取GArchiveModel中一个属性来，多策略查询需要重新修改方法
 +(NSString*)queryDBWeherMark;
-
+//Archive中储存的标识符
++(NSString*)getArchiveMarker;
 
 
 ///父类赋值到子类，数据会被覆盖

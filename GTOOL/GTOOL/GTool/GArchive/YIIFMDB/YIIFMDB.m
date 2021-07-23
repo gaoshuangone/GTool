@@ -99,7 +99,7 @@ static NSString * const yii_sql_integer = @"integer";       // 整型
 
 #pragma mark - 根据ModelClass去创建表
 
-- (BOOL)createTableWithModelClass:(Class)modelClass excludedProperties:(NSArray<NSString *> *)excludedProperties tableName:(NSString *)tableName {
+- (BOOL)createTableWithModelClass:(Class)modelClass g_excludedProperties:(NSArray<NSString *> *)g_excludedProperties tableName:(NSString *)tableName {
     if (!YIIIsStringValid(tableName)) {
         [self log:@"tableName必须是字符串，且不能为nil"];
 
@@ -114,7 +114,7 @@ static NSString * const yii_sql_integer = @"integer";       // 整型
     // 基于runtime获取model的所有属性以及类型
     NSDictionary *properties = [self getPropertiesWithModel:modelClass];
     for (NSString *key in properties) {
-        if (![excludedProperties containsObject:key]) {
+        if (![g_excludedProperties containsObject:key]) {
             continue;
         }
         
@@ -320,12 +320,12 @@ static NSString * const yii_sql_integer = @"integer";       // 整型
         }
         
      
-        [array addObject:[self gs_Object_modelWithDict:dict wtih:modelClass]];
+        [array addObject:[self g_Object_modelWithDict:dict wtih:modelClass]];
     }
     
     return (array.count > 0 ? array : nil);
 }
-- (id)gs_Object_modelWithDict:(NSDictionary *)dict wtih:(Class)modelClass {
+- (id)g_Object_modelWithDict:(NSDictionary *)dict wtih:(Class)modelClass {
     if (![dict isKindOfClass:[NSDictionary class]]) {
         return nil;
     }

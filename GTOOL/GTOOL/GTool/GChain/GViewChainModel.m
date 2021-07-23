@@ -83,7 +83,7 @@
     }
     return model;
 }
--(void)gs_addTapAction:(TapBlock)bloc{
+-(void)g_addTapAction:(TapBlock)bloc{
     
     if(bloc){
         
@@ -106,5 +106,9 @@
         bloc();
     }
     
+}
+-(UIView*)g_copyView:(UIView*)view{
+    NSData *tempArchive = [NSKeyedArchiver archivedDataWithRootObject:view];
+    return [NSKeyedUnarchiver unarchiveObjectWithData:tempArchive];
 }
 @end

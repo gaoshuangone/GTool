@@ -15,7 +15,7 @@
 		3B08929826AA9DAC00ED24DB /* YIIParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08924526AA9DAC00ED24DB /* YIIParameters.m */; };
 		3B08929926AA9DAC00ED24DB /* YIIFMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08924626AA9DAC00ED24DB /* YIIFMDB.m */; };
 		3B08929A26AA9DAC00ED24DB /* GDBManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08924826AA9DAC00ED24DB /* GDBManger.m */; };
-		3B08929B26AA9DAC00ED24DB /* GArchiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08924926AA9DAC00ED24DB /* GArchiveModel.m */; };
+		3B08929B26AA9DAC00ED24DB /* GModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08924926AA9DAC00ED24DB /* GModel.m */; };
 		3B08929C26AA9DAC00ED24DB /* GBaseChainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08924D26AA9DAC00ED24DB /* GBaseChainModel.m */; };
 		3B08929D26AA9DAC00ED24DB /* GViewChainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08924E26AA9DAC00ED24DB /* GViewChainModel.m */; };
 		3B08929E26AA9DAC00ED24DB /* GUIImageViewChainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08924F26AA9DAC00ED24DB /* GUIImageViewChainModel.m */; };
@@ -46,9 +46,10 @@
 		3B0892B726AA9DAD00ED24DB /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08928B26AA9DAC00ED24DB /* FMDatabase.m */; };
 		3B0892B826AA9DAD00ED24DB /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08928F26AA9DAC00ED24DB /* FMDatabasePool.m */; };
 		3B0892B926AA9DAD00ED24DB /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08929026AA9DAC00ED24DB /* FMResultSet.m */; };
+		3B0892BD26AAA3D600ED24DB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0892BB26AAA3D600ED24DB /* ViewController.m */; };
+		3B0892BE26AAA3D600ED24DB /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B0892BC26AAA3D600ED24DB /* ViewController.xib */; };
 		D35D93072588C78F004A0D42 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D35D93062588C78F004A0D42 /* AppDelegate.m */; };
 		D35D930A2588C78F004A0D42 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D35D93092588C78F004A0D42 /* SceneDelegate.m */; };
-		D35D930D2588C78F004A0D42 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D35D930C2588C78F004A0D42 /* ViewController.m */; };
 		D35D93102588C78F004A0D42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D35D930E2588C78F004A0D42 /* Main.storyboard */; };
 		D35D93122588C793004A0D42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D35D93112588C793004A0D42 /* Assets.xcassets */; };
 		D35D93152588C793004A0D42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D35D93132588C793004A0D42 /* LaunchScreen.storyboard */; };
@@ -75,10 +76,9 @@
 		3B08924426AA9DAC00ED24DB /* YIIFMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YIIFMDB.h; sourceTree = "<group>"; };
 		3B08924526AA9DAC00ED24DB /* YIIParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YIIParameters.m; sourceTree = "<group>"; };
 		3B08924626AA9DAC00ED24DB /* YIIFMDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YIIFMDB.m; sourceTree = "<group>"; };
-		3B08924726AA9DAC00ED24DB /* GDBMangerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDBMangerProtocol.h; sourceTree = "<group>"; };
 		3B08924826AA9DAC00ED24DB /* GDBManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDBManger.m; sourceTree = "<group>"; };
-		3B08924926AA9DAC00ED24DB /* GArchiveModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GArchiveModel.m; sourceTree = "<group>"; };
-		3B08924A26AA9DAC00ED24DB /* GArchiveModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GArchiveModel.h; sourceTree = "<group>"; };
+		3B08924926AA9DAC00ED24DB /* GModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GModel.m; sourceTree = "<group>"; };
+		3B08924A26AA9DAC00ED24DB /* GModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GModel.h; sourceTree = "<group>"; };
 		3B08924B26AA9DAC00ED24DB /* GDBManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDBManger.h; sourceTree = "<group>"; };
 		3B08924D26AA9DAC00ED24DB /* GBaseChainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBaseChainModel.m; sourceTree = "<group>"; };
 		3B08924E26AA9DAC00ED24DB /* GViewChainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GViewChainModel.m; sourceTree = "<group>"; };
@@ -143,14 +143,16 @@
 		3B08929026AA9DAC00ED24DB /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		3B08929126AA9DAC00ED24DB /* WYAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYAlertView.h; sourceTree = "<group>"; };
 		3B08929226AA9DAC00ED24DB /* ZJAnimationPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJAnimationPopView.h; sourceTree = "<group>"; };
+		3B0892BA26AAA3D600ED24DB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		3B0892BB26AAA3D600ED24DB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3B0892BC26AAA3D600ED24DB /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		3B0892C026AAC23A00ED24DB /* GModelProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GModelProtocol.h; sourceTree = "<group>"; };
 		D35B2077264FB2D50037A832 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		D35D93022588C78F004A0D42 /* GTOOL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTOOL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D35D93052588C78F004A0D42 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D35D93062588C78F004A0D42 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D35D93082588C78F004A0D42 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		D35D93092588C78F004A0D42 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		D35D930B2588C78F004A0D42 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D35D930C2588C78F004A0D42 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D35D930F2588C78F004A0D42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D35D93112588C793004A0D42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D35D93142588C793004A0D42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -210,11 +212,11 @@
 			isa = PBXGroup;
 			children = (
 				3B08924226AA9DAC00ED24DB /* YIIFMDB */,
-				3B08924726AA9DAC00ED24DB /* GDBMangerProtocol.h */,
-				3B08924826AA9DAC00ED24DB /* GDBManger.m */,
-				3B08924926AA9DAC00ED24DB /* GArchiveModel.m */,
-				3B08924A26AA9DAC00ED24DB /* GArchiveModel.h */,
+				3B0892C026AAC23A00ED24DB /* GModelProtocol.h */,
+				3B08924A26AA9DAC00ED24DB /* GModel.h */,
+				3B08924926AA9DAC00ED24DB /* GModel.m */,
 				3B08924B26AA9DAC00ED24DB /* GDBManger.h */,
+				3B08924826AA9DAC00ED24DB /* GDBManger.m */,
 			);
 			path = GArchive;
 			sourceTree = "<group>";
@@ -233,16 +235,16 @@
 		3B08924C26AA9DAC00ED24DB /* GChain */ = {
 			isa = PBXGroup;
 			children = (
-				3B08924D26AA9DAC00ED24DB /* GBaseChainModel.m */,
-				3B08924E26AA9DAC00ED24DB /* GViewChainModel.m */,
-				3B08924F26AA9DAC00ED24DB /* GUIImageViewChainModel.m */,
-				3B08925026AA9DAC00ED24DB /* GLabelChainModel.m */,
-				3B08925126AA9DAC00ED24DB /* GButtonChainModel.m */,
 				3B08925226AA9DAC00ED24DB /* GBaseChainModel.h */,
-				3B08925326AA9DAC00ED24DB /* GUIImageViewChainModel.h */,
-				3B08925426AA9DAC00ED24DB /* GViewChainModel.h */,
+				3B08924D26AA9DAC00ED24DB /* GBaseChainModel.m */,
 				3B08925526AA9DAC00ED24DB /* GButtonChainModel.h */,
+				3B08925126AA9DAC00ED24DB /* GButtonChainModel.m */,
 				3B08925626AA9DAC00ED24DB /* GLabelChainModel.h */,
+				3B08925026AA9DAC00ED24DB /* GLabelChainModel.m */,
+				3B08925326AA9DAC00ED24DB /* GUIImageViewChainModel.h */,
+				3B08924F26AA9DAC00ED24DB /* GUIImageViewChainModel.m */,
+				3B08925426AA9DAC00ED24DB /* GViewChainModel.h */,
+				3B08924E26AA9DAC00ED24DB /* GViewChainModel.m */,
 			);
 			path = GChain;
 			sourceTree = "<group>";
@@ -379,8 +381,9 @@
 				D35D93062588C78F004A0D42 /* AppDelegate.m */,
 				D35D93082588C78F004A0D42 /* SceneDelegate.h */,
 				D35D93092588C78F004A0D42 /* SceneDelegate.m */,
-				D35D930B2588C78F004A0D42 /* ViewController.h */,
-				D35D930C2588C78F004A0D42 /* ViewController.m */,
+				3B0892BA26AAA3D600ED24DB /* ViewController.h */,
+				3B0892BB26AAA3D600ED24DB /* ViewController.m */,
+				3B0892BC26AAA3D600ED24DB /* ViewController.xib */,
 				D35D93B6258A08F8004A0D42 /* SecondViewController.h */,
 				D35D93B7258A08F8004A0D42 /* SecondViewController.m */,
 				D36E904725946A7D00DFA4AF /* SecondModel.h */,
@@ -457,6 +460,7 @@
 			files = (
 				D35D93152588C793004A0D42 /* LaunchScreen.storyboard in Resources */,
 				D35D93122588C793004A0D42 /* Assets.xcassets in Resources */,
+				3B0892BE26AAA3D600ED24DB /* ViewController.xib in Resources */,
 				3B0892B326AA9DAD00ED24DB /* README.markdown in Resources */,
 				3B0892AD26AA9DAD00ED24DB /* README.md in Resources */,
 				3B0892A226AA9DAC00ED24DB /* LICENSE in Resources */,
@@ -475,13 +479,12 @@
 				3B08929D26AA9DAC00ED24DB /* GViewChainModel.m in Sources */,
 				3B0892B926AA9DAD00ED24DB /* FMResultSet.m in Sources */,
 				3B08929526AA9DAC00ED24DB /* NSFileManager+GFileManager.m in Sources */,
-				D35D930D2588C78F004A0D42 /* ViewController.m in Sources */,
 				3B08929726AA9DAC00ED24DB /* UIView+GView.m in Sources */,
 				3B0892B026AA9DAD00ED24DB /* GCDGroup.m in Sources */,
 				3B0892AF26AA9DAD00ED24DB /* GCDTimer.m in Sources */,
 				3B0892A526AA9DAC00ED24DB /* MASCompositeConstraint.m in Sources */,
 				D36E904925946A7D00DFA4AF /* SecondModel.m in Sources */,
-				3B08929B26AA9DAC00ED24DB /* GArchiveModel.m in Sources */,
+				3B08929B26AA9DAC00ED24DB /* GModel.m in Sources */,
 				3B0892A826AA9DAC00ED24DB /* NSArray+MASAdditions.m in Sources */,
 				3B0892A926AA9DAC00ED24DB /* View+MASAdditions.m in Sources */,
 				D35D93072588C78F004A0D42 /* AppDelegate.m in Sources */,
@@ -513,6 +516,7 @@
 				D35D930A2588C78F004A0D42 /* SceneDelegate.m in Sources */,
 				3B08929926AA9DAC00ED24DB /* YIIFMDB.m in Sources */,
 				3B0892A326AA9DAC00ED24DB /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				3B0892BD26AAA3D600ED24DB /* ViewController.m in Sources */,
 				3B0892B726AA9DAD00ED24DB /* FMDatabase.m in Sources */,
 				3B0892B626AA9DAD00ED24DB /* FMDatabaseAdditions.m in Sources */,
 			);

@@ -50,7 +50,7 @@ typedef void (^ButtonTouchUpInsideBlock)(void);
 +(UIButton*)g_Init:(void (^)(UIButton* gs))initBlock;
 +(UIButton*)g_Init:(void (^)(UIButton* gs))initBlock withSuperView:(UIView*)superView withMasonry:(void (^)(MASConstraintMaker *make,UIButton* gs))masBlock withAction:(void (^)(UIButton*gs))actionBlock;
 
--(UIButton*)gs_setButtonImagePosition:(GButtonImagePosition)position spacing:(CGFloat)spacing;
+-(UIButton*)g_setButtonImagePosition:(GButtonImagePosition)position spacing:(CGFloat)spacing;
 
 -(void)zj_addBtnActionHandler:(ButtonTouchUpInsideBlock)touchHandler;
 
