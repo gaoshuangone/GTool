@@ -31,20 +31,20 @@
 
 #pragma mark- 数据库储存提供的方法
 ///插入
-+(void)g_dbInsert;
-+(void)g_dbInsertWithWithModels:(NSArray<GModel*>*)models;
+-(void)g_dbInsert;
+-(void)g_dbInsertWithWithModels:(NSArray<GModel*>*)models;
 ///删除
-+(void)g_dbDel;
-+(void)g_dbDelwithORQueryID:(NSString*)iD;
+-(void)g_dbDel;
+-(void)g_dbDelwithORQueryID:(NSString*)iD;
 ///更新
-+(void)g_dbUpdate;
+-(void)g_dbUpdate;
 ///查询
-+(NSArray<GModel*>*)g_dbQueryALL;
-+(NSArray<GModel*>*)g_dbQueryWithIDArray:(NSArray<NSString*>*)idArray;
+-(NSArray<GModel*>*)g_dbQueryAll;
+-(NSArray<GModel*>*)g_dbQueryWithIDArray:(NSArray<NSString*>*)idArray;
 ///是否已经储存过了
-+(BOOL)g_dbIsContain;
+-(BOOL)g_dbIsContain;
 ///需要切换表的时候
-+(void)g_dbTableChangeBlock:(void (^)(void))block;
+-(void)g_dbTableChangeBlock:(void (^)(void))block;
 @end
 
 @protocol GArchiveModelProtocol <NSObject>
@@ -54,12 +54,18 @@
 +(NSString*)g_setArchiveMarker;
 
 #pragma mark- 归档储存提供的方法
-//删除ArchiveModel
-+(GModel*)g_archiveGet;
+
+/*获取archiveModel，block结束后会进行更新
+需要删除的话在block内部调用g_archiveDel
+**/
++(__kindof GModel *)g_archiveWithBlock:(void (^)(__kindof GModel* modelSub))block;
+///获取archiveModel
++(__kindof GModel*)g_archiveGet;
 //删除ArchiveModel
 +(void)g_archiveDel;
-//更新ArchiveModel，可作为第一次赋值使用
-+(__kindof GModel *)g_archiveUpdatewtihBlock:(void (^)(__kindof GModel* modelSub))block;
+//更新ArchiveModel
+-(void)g_archiveUpdate;
+
 @end
 
 #endif /* GModelProtocol_h */

@@ -17,5 +17,5 @@
 #import "GCD.h"
 #import "NSDate+GDate.h"
 #import "UIAlertController+GAlert.h"
-#import "GDBManger.h"
+#import "GModelManger.h"
 #endif /* Header_h */

@@ -53,15 +53,15 @@ static NSObject* model ;
     model1.userID = @"11111";
     model1.aaa = @"11111";
 
-    [GDBManger insertWithModel:model1];
-    [GDBManger queryFromTableWithMarkClass:[SecondModel class]];
-    [GDBManger delWithModel:nil withORID:@"11111"];
+    [GModelManger insertWithModel:model1];
+    [GModelManger queryFromTableWithMarkClass:[SecondModel class]];
+    [GModelManger delWithModel:nil withORID:@"11111"];
     
 //    [db insertWithModel:model1];
 //
 //
 //
-//    GDBManger* db = [GDBManger shared];
+//    GModelManger* db = [GModelManger shared];
 
 //    SecondModel* model2 = [[SecondModel alloc]init];
 //    model2.userID = @"2222";
@@ -119,40 +119,56 @@ static NSObject* model ;
 
 -(void)testArchiveNew{
     
-    SecondModel* model1 =   [GDBManger archiveGetWithClass:[SecondModel class]];
+    SecondModel* model =  [SecondModel g_archiveWithBlock:^(__kindof GModel *modelSub) {
+        [SecondModel g_archiveDel];
+
+    }];
+
+    
+    
+    
+//    SecondModel* model =  [SecondModel g_archiveGet];
+//    model.userID = @"1111";
+//    model.aaa = @"bbb";
+////    [SecondModel g_archiveDel];
+//
+//    [model g_archiveUpdate];
+  
+    
+//    SecondModel* model1 =   [GModelManger archiveGetWithClass:[SecondModel class]];
 //
 //    model1.userID = @"1111";
 //
 //    if (!model1) {
 //        model1 = [[SecondModel alloc]init];
 //    }
-//    [GDBManger archiveSetWithModel:model1];
+//    [GModelManger archiveSetWithModel:model1];
 //
-//    SecondModel* model2 =   [GDBManger archiveGetWithClass:[SecondModel class]];
+//    SecondModel* model2 =   [GModelManger archiveGetWithClass:[SecondModel class]];
 //
 //
 //
-//    SecondModel* model3 = [GDBManger archiveUpdateWithClass:[SecondModel class] wtihBlock:^(__kindof GModel * _Nonnull modelSub) {
+//    SecondModel* model3 = [GModelManger archiveUpdateWithClass:[SecondModel class] wtihBlock:^(__kindof GModel * _Nonnull modelSub) {
 //        SecondModel* model = modelSub;
 //        model.userID = @"222222";
 //    }];
     
-//    ThreeModel* model4 = [GDBManger archiveUpdateWithClass:[ThreeModel class] wtihBlock:^(__kindof GModel * _Nonnull modelSub) {
+//    ThreeModel* model4 = [GModelManger archiveUpdateWithClass:[ThreeModel class] wtihBlock:^(__kindof GModel * _Nonnull modelSub) {
 //        ThreeModel* model = modelSub;
 //        model.userID = @"222222";
 //    }];
     
-//    ThreeModel* model5= [GDBManger archiveWithClass:[ThreeModel class] wtihUpdateBlock:^(__kindof id<GDBMangerProtocol>  _Nonnull modelSub) {
+//    ThreeModel* model5= [GModelManger archiveWithClass:[ThreeModel class] wtihUpdateBlock:^(__kindof id<GDBMangerProtocol>  _Nonnull modelSub) {
 //        ThreeModel* model = modelSub;
 //        model.userID = @"555";
 //    }];
     
-//    ThreeModel* model4 = [GDBManger archiveWithClass:[ThreeModel class] wtihUpdateBlock:^(__kindof GModel * _Nonnull modelSub) {
+//    ThreeModel* model4 = [GModelManger archiveWithClass:[ThreeModel class] wtihUpdateBlock:^(__kindof GModel * _Nonnull modelSub) {
 //        ThreeModel* model = modelSub;
 //        model.userID = @"4444";
 //    }];
 //
-//    ThreeModel* model5 = [GDBManger archiveUpdateWithClass:[ThreeModel class] wtihBlock:^(__kindof GModel * _Nonnull modelSub) {
+//    ThreeModel* model5 = [GModelManger archiveUpdateWithClass:[ThreeModel class] wtihBlock:^(__kindof GModel * _Nonnull modelSub) {
 //        ThreeModel* model = modelSub;
 //        model.userID = @"222222";
 //    }];

@@ -9,7 +9,7 @@
 #import "GModelProtocol.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DBUserInfoModel : GDBManger<GDBModelProtocol>
+@interface DBUserInfoModel : GModelManger<GDBModelProtocol>
 
 @end
 

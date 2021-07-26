@@ -1,5 +1,5 @@
 //
-//  GDBManger.h
+//  GModelManger.h
 //  GTOOL
 //
 //  Created by tg on 2020/12/24.
@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 
-@interface GDBManger : NSObject<GHelperProtocol>
+@interface GModelManger : NSObject<GHelperProtocol>
 
 @property (strong,readonly, nonatomic)Class dbModelClass;
 @property (strong,readonly, nonatomic)id dbShard;
@@ -22,8 +22,10 @@ NS_ASSUME_NONNULL_BEGIN
 +(GModel*)archiveGetWithClass:(Class)classModel;
 /// 删除持久化数据
 +(void)archiveDelWithClass:(Class)classModel;
+/// 更新持久化数据
++(void)archiveUpdateWithClass:(Class)classModel with:(__kindof GModel*)model;
 /// classModel 需要继承GModel
-+(__kindof GModel *)archiveWithwithClass:(Class)classModel wtihBlock:(void (^)(__kindof GModel* modelSub))block;
++(__kindof GModel *)archiveWithClass:(Class)classModel wtihBlock:(void (^)(__kindof GModel* modelSub))block;
 
 
 

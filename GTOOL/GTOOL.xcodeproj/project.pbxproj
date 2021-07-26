@@ -14,7 +14,7 @@
 		3B08929726AA9DAC00ED24DB /* UIView+GView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08923F26AA9DAC00ED24DB /* UIView+GView.m */; };
 		3B08929826AA9DAC00ED24DB /* YIIParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08924526AA9DAC00ED24DB /* YIIParameters.m */; };
 		3B08929926AA9DAC00ED24DB /* YIIFMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08924626AA9DAC00ED24DB /* YIIFMDB.m */; };
-		3B08929A26AA9DAC00ED24DB /* GDBManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08924826AA9DAC00ED24DB /* GDBManger.m */; };
+		3B08929A26AA9DAC00ED24DB /* GModelManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08924826AA9DAC00ED24DB /* GModelManger.m */; };
 		3B08929B26AA9DAC00ED24DB /* GModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08924926AA9DAC00ED24DB /* GModel.m */; };
 		3B08929C26AA9DAC00ED24DB /* GBaseChainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08924D26AA9DAC00ED24DB /* GBaseChainModel.m */; };
 		3B08929D26AA9DAC00ED24DB /* GViewChainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08924E26AA9DAC00ED24DB /* GViewChainModel.m */; };
@@ -76,10 +76,10 @@
 		3B08924426AA9DAC00ED24DB /* YIIFMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YIIFMDB.h; sourceTree = "<group>"; };
 		3B08924526AA9DAC00ED24DB /* YIIParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YIIParameters.m; sourceTree = "<group>"; };
 		3B08924626AA9DAC00ED24DB /* YIIFMDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YIIFMDB.m; sourceTree = "<group>"; };
-		3B08924826AA9DAC00ED24DB /* GDBManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDBManger.m; sourceTree = "<group>"; };
+		3B08924826AA9DAC00ED24DB /* GModelManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GModelManger.m; sourceTree = "<group>"; };
 		3B08924926AA9DAC00ED24DB /* GModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GModel.m; sourceTree = "<group>"; };
 		3B08924A26AA9DAC00ED24DB /* GModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GModel.h; sourceTree = "<group>"; };
-		3B08924B26AA9DAC00ED24DB /* GDBManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDBManger.h; sourceTree = "<group>"; };
+		3B08924B26AA9DAC00ED24DB /* GModelManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GModelManger.h; sourceTree = "<group>"; };
 		3B08924D26AA9DAC00ED24DB /* GBaseChainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBaseChainModel.m; sourceTree = "<group>"; };
 		3B08924E26AA9DAC00ED24DB /* GViewChainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GViewChainModel.m; sourceTree = "<group>"; };
 		3B08924F26AA9DAC00ED24DB /* GUIImageViewChainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUIImageViewChainModel.m; sourceTree = "<group>"; };
@@ -215,8 +215,8 @@
 				3B0892C026AAC23A00ED24DB /* GModelProtocol.h */,
 				3B08924A26AA9DAC00ED24DB /* GModel.h */,
 				3B08924926AA9DAC00ED24DB /* GModel.m */,
-				3B08924B26AA9DAC00ED24DB /* GDBManger.h */,
-				3B08924826AA9DAC00ED24DB /* GDBManger.m */,
+				3B08924B26AA9DAC00ED24DB /* GModelManger.h */,
+				3B08924826AA9DAC00ED24DB /* GModelManger.m */,
 			);
 			path = GArchive;
 			sourceTree = "<group>";
@@ -489,7 +489,7 @@
 				3B0892A926AA9DAC00ED24DB /* View+MASAdditions.m in Sources */,
 				D35D93072588C78F004A0D42 /* AppDelegate.m in Sources */,
 				3B0892B126AA9DAD00ED24DB /* GCDSemaphore.m in Sources */,
-				3B08929A26AA9DAC00ED24DB /* GDBManger.m in Sources */,
+				3B08929A26AA9DAC00ED24DB /* GModelManger.m in Sources */,
 				3B08929826AA9DAC00ED24DB /* YIIParameters.m in Sources */,
 				3B08929C26AA9DAC00ED24DB /* GBaseChainModel.m in Sources */,
 				D36E905D2594867800DFA4AF /* DBUserInfoModel.m in Sources */,

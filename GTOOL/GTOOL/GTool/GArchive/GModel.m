@@ -7,7 +7,7 @@
 
 #import "GModel.h"
 #import <objc/runtime.h>
-#import "GDBManger.h"
+#import "GModelManger.h"
 @interface GModel()
 
 @end
@@ -78,7 +78,7 @@ GHELPER_SHARED(GModel)
 
 - (NSString *)description {
     
-#if defined(DEBUG) && DEBUG
+#if DEBUG
     unsigned int mothCout_f = 0;
     Method *mothList_f = class_copyMethodList([self class], &mothCout_f);
     for(int i = 0; i < mothCout_f; i++)
@@ -89,8 +89,8 @@ GHELPER_SHARED(GModel)
         const char* name_s = sel_getName(name_f);
         int arguments = method_getNumberOfArguments(temp_f);
         const char* encoding = method_getTypeEncoding(temp_f);
-        
-        NSLog(@"方法名：%@,参数个数：%d,编码方式：%@",[NSString stringWithUTF8String:name_s], arguments, [NSString stringWithUTF8String:encoding]);
+        NSLog(@"方法名：%@",[NSString stringWithUTF8String:name_s] );
+//        NSLog(@"方法名：%@,参数个数：%d,编码方式：%@",[NSString stringWithUTF8String:name_s], arguments, [NSString stringWithUTF8String:encoding]);
     }
     
     free(mothList_f);
@@ -151,42 +151,64 @@ GHELPER_SHARED(GModel)
 
 #pragma mark- 数据库储存提供的方法
 ///插入
-+(void)g_dbInsert{
-    [GDBManger insertWithModel:(GModel*)self];
+-(void)g_dbInsert{
+    [GModelManger insertWithModel:(GModel*)self];
 
 }
-+(void)g_dbInsertWithWithModels:(NSArray<GModel*>*)models{
-    [GDBManger insertWithModels:models];
+-(void)g_dbInsertWithWithModels:(NSArray<GModel*>*)models{
+    [GModelManger insertWithModels:models];
 }
 ///删除
-+(void)g_dbDel{
-    [GDBManger delWithModel:(GModel*)self withORID:nil];
+-(void)g_dbDel{
+    [GModelManger delWithModel:(GModel*)self withORID:nil];
 }
-+(void)g_dbDelWithORQueryID:(NSString*)iD{
-    [GDBManger delWithModel:(GModel*)self withORID:iD];
+-(void)g_dbDelWithORQueryID:(NSString*)iD{
+    [GModelManger delWithModel:(GModel*)self withORID:iD];
 }
 
 ///更新
-+(void)g_dbUpdate{
-    [GDBManger updateWithModel:(GModel*)self];
+-(void)g_dbUpdate{
+    [GModelManger updateWithModel:(GModel*)self];
 }
 ///查询
-+(NSArray<GModel*>*)g_dbQueryAll{
-    return  [GDBManger queryFromTableWithMarkClass:[self class]];
+-(NSArray<GModel*>*)g_dbQueryAll;{
+    return  [GModelManger queryFromTableWithMarkClass:[self class]];
 }
-+(NSArray<GModel*>*)g_dbQueryWithIDArray:(NSArray<NSString*>*)idArray{
-    return  [GDBManger queryFromTableWithIDArray:idArray withMarkClass:[self class]];
+-(NSArray<GModel*>*)g_dbQueryWithIDArray:(NSArray<NSString*>*)idArray{
+    return  [GModelManger queryFromTableWithIDArray:idArray withMarkClass:[self class]];
 }
 ///是否已经储存过了
-+(BOOL)g_dbIsContain{
-    return  [GDBManger isContainsWith:(GModel*)self];
+-(BOOL)g_dbIsContain{
+    return  [GModelManger isContainsWith:(GModel*)self];
 }
 ///需要切换表的时候
 +(void)g_dbTableChangeBlock:(void (^)(void))block{
-    [GDBManger dbTableChangeBLock:block];
+    [GModelManger dbTableChangeBLock:block];
 }
 
 
+#pragma mark - 使用归档储存需要设置
+-(NSString*)g_setArchiveMarker{
+    return NSStringFromClass([self class]);
+}
 
+#pragma mark- 归档储存提供的方法
+///获取archive数据
++(__kindof GModel*)g_archiveGet{
+    return  [GModelManger archiveGetWithClass:[self class]];
+}
 
+-(void)g_archiveUpdate{
+    return  [GModelManger archiveUpdateWithClass:[self class] with:self];
+}
+
+////删除ArchiveModel
++(void)g_archiveDel{
+    [GModelManger archiveDelWithClass:[self class]];
+   
+}
+////更新ArchiveModel，可作为第一次赋值使用
++(__kindof GModel *)g_archiveWithBlock:(void (^)(__kindof GModel* modelSub))block{
+    return  [GModelManger archiveWithClass:[self class] wtihBlock:block];
+}
 @end
