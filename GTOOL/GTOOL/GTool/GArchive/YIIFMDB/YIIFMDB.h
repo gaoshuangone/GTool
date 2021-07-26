@@ -74,11 +74,11 @@ typedef void(^YIICompletionBlock)(YIIFMDB *db, NSDictionary *unrecognizedPropert
  *  根据传入的Model去创建表(推荐使用此方法)
  *  @param modelClass 根据传入的Model的class去创建表，其中表名就是model的类名。
                       同时，model里面的属性名称就作为表的key值,属性的value的类型也就是表里面的value的类型，如value可以是NSString，integer，float，bool等，详情请参考YIIFMDBValueType
- *  @param g_excludedProperties 需要缓存的属性，这些属性被排除掉之后则不会存在数据库当中
+ *  @param g_setDBExcludedProperties 需要缓存的属性，这些属性被排除掉之后则不会存在数据库当中
  *  @param tableName    表名，不可以为nil   表名，不可以为nil   ,AAA_111    类型     数字不能在前
  *  @return 是否创建成功
  */
-- (BOOL)createTableWithModelClass:(Class _Nonnull)modelClass g_excludedProperties:(NSArray<NSString *> * _Nullable)g_excludedProperties tableName:(NSString * _Nonnull)tableName;
+- (BOOL)createTableWithModelClass:(Class _Nonnull)modelClass g_setDBExcludedProperties:(NSArray<NSString *> * _Nullable)g_setDBExcludedProperties tableName:(NSString * _Nonnull)tableName;
 
 #pragma mark - 插入数据
 

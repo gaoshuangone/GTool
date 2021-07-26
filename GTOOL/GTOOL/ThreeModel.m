@@ -8,14 +8,14 @@
 #import "ThreeModel.h"
 
 @implementation ThreeModel
-+(NSString*)g_setTableNameMarker{
++(NSString*)g_setDBTableNameMarker{
 
     return @"DBUserInfoModel_Name_ThreeModel";
 }
-+(Class)g_setClassModelMarker{
++(Class)g_setDBClassModelMarker{
     return  [ThreeModel class];
 }
-+(NSArray<NSString*>*)g_excludedProperties{
++(NSArray<NSString*>*)g_setDBExcludedProperties{
     return @[@"aaa",@"userIDSString"];
 }
 +(NSString*)g_setDBQueryMarker{

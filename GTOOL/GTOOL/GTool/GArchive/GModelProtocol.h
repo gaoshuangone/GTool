@@ -21,11 +21,11 @@
 @optional
 #pragma mark - 使用数据库储存需要设置
 /// 生成表名 需要跟用户对应起来
-+(NSString*)g_setTableNameMarker;
++(NSString*)g_setDBTableNameMarker;
 ///根据表建立的模型
-+(Class)g_setClassModelMarker;
++(Class)g_setDBClassModelMarker;
 ///筛选需要记录的表中的属性，为nil表示全部记录
-+(NSArray<NSString*>*)g_excludedProperties;
++(NSArray<NSString*>*)g_setDBExcludedProperties;
 ///表中增删改查，需要的标示，表示要取GModel中一个属性来，多策略查询需要重新修改方法
 +(NSString*)g_setDBQueryMarker;
 
@@ -33,14 +33,15 @@
 ///插入
 -(void)g_dbInsert;
 -(void)g_dbInsertWithWithModels:(NSArray<GModel*>*)models;
-///删除
+///删除整张表
 -(void)g_dbDel;
+///通过maker删除对应数据
 -(void)g_dbDelwithORQueryID:(NSString*)iD;
 ///更新
 -(void)g_dbUpdate;
 ///查询
--(NSArray<GModel*>*)g_dbQueryAll;
--(NSArray<GModel*>*)g_dbQueryWithIDArray:(NSArray<NSString*>*)idArray;
++(NSArray<GModel*>*)g_dbQueryAll;
++(NSArray<GModel*>*)g_dbQueryWithIDArray:(NSArray<NSString*>*)idArray;
 ///是否已经储存过了
 -(BOOL)g_dbIsContain;
 ///需要切换表的时候

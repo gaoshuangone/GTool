@@ -182,7 +182,6 @@
 		3B08923426AA9DAC00ED24DB /* GTool */ = {
 			isa = PBXGroup;
 			children = (
-				3B08923526AA9DAC00ED24DB /* GCatefory */,
 				3B08924026AA9DAC00ED24DB /* GHeader.h */,
 				3B08924126AA9DAC00ED24DB /* GArchive */,
 				3B08924C26AA9DAC00ED24DB /* GChain */,
@@ -376,6 +375,7 @@
 		D35D93042588C78F004A0D42 /* GTOOL */ = {
 			isa = PBXGroup;
 			children = (
+				3B08923526AA9DAC00ED24DB /* GCatefory */,
 				3B08923426AA9DAC00ED24DB /* GTool */,
 				D35D93052588C78F004A0D42 /* AppDelegate.h */,
 				D35D93062588C78F004A0D42 /* AppDelegate.m */,

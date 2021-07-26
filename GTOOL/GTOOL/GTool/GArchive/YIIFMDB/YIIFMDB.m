@@ -99,7 +99,7 @@ static NSString * const yii_sql_integer = @"integer";       // 整型
 
 #pragma mark - 根据ModelClass去创建表
 
-- (BOOL)createTableWithModelClass:(Class)modelClass g_excludedProperties:(NSArray<NSString *> *)g_excludedProperties tableName:(NSString *)tableName {
+- (BOOL)createTableWithModelClass:(Class)modelClass g_setDBExcludedProperties:(NSArray<NSString *> *)g_setDBExcludedProperties tableName:(NSString *)tableName {
     if (!YIIIsStringValid(tableName)) {
         [self log:@"tableName必须是字符串，且不能为nil"];
 
@@ -114,7 +114,7 @@ static NSString * const yii_sql_integer = @"integer";       // 整型
     // 基于runtime获取model的所有属性以及类型
     NSDictionary *properties = [self getPropertiesWithModel:modelClass];
     for (NSString *key in properties) {
-        if (![g_excludedProperties containsObject:key]) {
+        if (![g_setDBExcludedProperties containsObject:key]) {
             continue;
         }
         

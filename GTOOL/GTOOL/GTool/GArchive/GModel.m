@@ -78,22 +78,38 @@ GHELPER_SHARED(GModel)
 
 - (NSString *)description {
     
-#if DEBUG
-    unsigned int mothCout_f = 0;
-    Method *mothList_f = class_copyMethodList([self class], &mothCout_f);
-    for(int i = 0; i < mothCout_f; i++)
-    {
-        Method temp_f = mothList_f[i];
-//        IMP imp_f = method_getImplementation(temp_f);
-        SEL name_f = method_getName(temp_f);
-        const char* name_s = sel_getName(name_f);
-        int arguments = method_getNumberOfArguments(temp_f);
-        const char* encoding = method_getTypeEncoding(temp_f);
-        NSLog(@"方法名：%@",[NSString stringWithUTF8String:name_s] );
-//        NSLog(@"方法名：%@,参数个数：%d,编码方式：%@",[NSString stringWithUTF8String:name_s], arguments, [NSString stringWithUTF8String:encoding]);
+#if defined(DEBUG) && DEBUG
+    unsigned int count;
+    const char *clasName = object_getClassName(self);
+    NSMutableString *string = [NSMutableString stringWithFormat:@"<%s: %p>:[",clasName, self];
+    Class clas = NSClassFromString([NSString stringWithCString:clasName encoding:NSUTF8StringEncoding]);
+    Ivar *ivars = class_copyIvarList(clas, &count);
+    for (int i = 0; i < count; i++) {
+        @autoreleasepool {
+            Ivar ivar = ivars[i];
+            const char *name = ivar_getName(ivar);
+            
+            //得到类型
+            NSString *type = [NSString stringWithCString:ivar_getTypeEncoding(ivar) encoding:NSUTF8StringEncoding];
+            NSString *key = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
+            
+            
+            if ([key isEqualToString:@"_array_Temp"]) {
+                break ;
+            }
+            id value = [self valueForKey:key];
+            //确保BOOL 值输出的是YES 或 NO，这里的B是我打印属性类型得到的……
+            if ([type isEqualToString:@"B"]) {
+                value = (value == 0 ? @"NO" : @"YES");
+            }
+            //            [string appendFormat:@"\t%@ = %@\n",[self delLine:key], value];
+            [string appendFormat:@"  %@=%@  ",key, value];
+            
+        }
     }
-    
-    free(mothList_f);
+    [string appendFormat:@"]"];
+
+    return string;
     #endif
     return @"";
 }
@@ -130,17 +146,17 @@ GHELPER_SHARED(GModel)
 
 #pragma mark - 使用数据库储存需要设置
 /// 生成表名 需要跟用户对应起来
-+(NSString*)g_setTableNameMarker{
++(NSString*)g_setDBTableNameMarker{
     return @"DBUserInfoModel_Name";
 
 }
 ///根据表建立的模型
-+(Class)g_setClassModelMarker{
++(Class)g_setDBClassModelMarker{
     return  [self class];
 
 }
 /////筛选需要记录的表中的属性，为nil表示全部记录
-//+(NSArray<NSString*>*)g_excludedProperties{
+//+(NSArray<NSString*>*)g_setDBExcludedProperties{
 //    return @[@"userID"];
 //
 //}
@@ -162,7 +178,7 @@ GHELPER_SHARED(GModel)
 -(void)g_dbDel{
     [GModelManger delWithModel:(GModel*)self withORID:nil];
 }
--(void)g_dbDelWithORQueryID:(NSString*)iD{
+-(void)g_dbDelwithORQueryID:(NSString*)iD{
     [GModelManger delWithModel:(GModel*)self withORID:iD];
 }
 
@@ -171,7 +187,7 @@ GHELPER_SHARED(GModel)
     [GModelManger updateWithModel:(GModel*)self];
 }
 ///查询
--(NSArray<GModel*>*)g_dbQueryAll;{
++(NSArray<GModel*>*)g_dbQueryAll;{
     return  [GModelManger queryFromTableWithMarkClass:[self class]];
 }
 -(NSArray<GModel*>*)g_dbQueryWithIDArray:(NSArray<NSString*>*)idArray{

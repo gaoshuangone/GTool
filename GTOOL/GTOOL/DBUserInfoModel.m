@@ -8,14 +8,14 @@
 #import "DBUserInfoModel.h"
 #import "SecondModel.h"
 @implementation DBUserInfoModel
--(NSString*)g_setTableNameMarker{
+-(NSString*)g_setDBTableNameMarker{
 
     return @"DBUserInfoModel_Name";
 }
--(Class)g_setClassModelMarker{
+-(Class)g_setDBClassModelMarker{
     return  [SecondModel class];
 }
--(NSArray<NSString*>*)g_excludedProperties{
+-(NSArray<NSString*>*)g_setDBExcludedProperties{
     return @[@"aaa",@"userID"];
 }
 -(NSString*)g_setDBQueryMarker{

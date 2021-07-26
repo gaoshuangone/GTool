@@ -35,11 +35,14 @@ NS_ASSUME_NONNULL_BEGIN
 +(void)insertWithModel:(GModel*)model;
 /// 批量插入数据
 +(void)insertWithModels:(NSArray<GModel*>*)models;
+/// 删除数据
++(void)delWithModel:(GModel*)model;
 
 /// 删除数据
 /// model需要包涵主键
 /// @param strID 或者根据id删除数据
 +(void)delWithModel:(GModel*)model withORID:(NSString* _Nullable )strID;
+
 /// 更新数据
 +(void)updateWithModel:(GModel*)model;
 

@@ -60,9 +60,23 @@
     model1.userID = @"11111";
     model1.aaa = @"bbb";
     
+    //插入
     [model1 g_dbInsert];
-    
-    [model1 g_dbQueryAll];
+    //查询所有
+    [SecondModel g_dbQueryAll];
+    //删除表
+    [model1 g_dbDel];
+    //插入
+    [model1 g_dbInsert];
+    model1.userID = @"2222";
+    //插入
+    [model1 g_dbInsert];
+    //查询所有
+    [SecondModel g_dbQueryAll];
+
+    [model1 g_dbDelwithORQueryID:@"11111"];
+    //查询所有
+    [SecondModel g_dbQueryAll];
 //        [GModelManger insertWithModel:model1];
 //        [GModelManger queryFromTableWithMarkClass:[SecondModel class]];
 //        [GModelManger delWithModel:nil withORID:@"11111"];

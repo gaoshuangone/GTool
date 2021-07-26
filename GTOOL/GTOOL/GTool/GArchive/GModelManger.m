@@ -20,7 +20,7 @@ static YIIFMDB *_dbShard = nil;
 
 @implementation GModelManger
 GHELPER_SHARED(GModelManger)
-
+GHELPER_FREE();
 
 +(NSString*)getArchiveKeyWithClass:(Class)classModel{
     return  [DBKEY stringByAppendingFormat:@"_%@",[classModel g_setArchiveMarker]];
@@ -95,7 +95,7 @@ GHELPER_SHARED(GModelManger)
         
         _dbShard = [YIIFMDB shareDatabase];
         [_dbShard inDatabase:^{
-            BOOL isSuccess =   [_dbShard createTableWithModelClass:[GModelManger shared].dbModelClass   g_excludedProperties:[[GModelManger shared].dbModelClass g_excludedProperties] tableName:[[GModelManger shared].dbModelClass g_setTableNameMarker]];
+            BOOL isSuccess =   [_dbShard createTableWithModelClass:[GModelManger shared].dbModelClass   g_setDBExcludedProperties:[[GModelManger shared].dbModelClass g_setDBExcludedProperties] tableName:[[GModelManger shared].dbModelClass g_setDBTableNameMarker]];
             if (!isSuccess) {
                 
             }
@@ -108,7 +108,7 @@ GHELPER_SHARED(GModelManger)
     
     [GModelManger shared].dbModelClass = [model class];
     [[GModelManger shared].dbShard inTransaction:^(BOOL *rollback) {
-        BOOL isSuccess = [[GModelManger shared].dbShard insertWithModel:model tableName:[[GModelManger shared].dbModelClass g_setTableNameMarker]];  //插入一条数据
+        BOOL isSuccess = [[GModelManger shared].dbShard insertWithModel:model tableName:[[GModelManger shared].dbModelClass g_setDBTableNameMarker]];  //插入一条数据
         if (!isSuccess) {
             NSLog(@"******插入数据失败");
         }
@@ -129,12 +129,15 @@ GHELPER_SHARED(GModelManger)
     [[GModelManger shared].dbShard inTransaction:^(BOOL *rollback) {
         
         
-        [[GModelManger shared].dbShard insertWithModels:models tableName:[[GModelManger shared].dbModelClass g_setTableNameMarker]];  //插入一条数据
+        [[GModelManger shared].dbShard insertWithModels:models tableName:[[GModelManger shared].dbModelClass g_setDBTableNameMarker]];  //插入一条数据
     }];
     
     
 }
-
+/// 删除表
++(void)delWithModel:(GModel*)model{
+    [self delWithModel:model withORID:nil];
+}
 +(void)delWithModel:(GModel*)model withORID:(NSString*)strID;
 {
     [GModelManger shared].dbModelClass = [model class];
@@ -143,16 +146,16 @@ GHELPER_SHARED(GModelManger)
     [[GModelManger shared].dbShard inTransaction:^(BOOL *rollback) {
         
         YIIParameters* par = [[YIIParameters alloc]init];
+        if (strID && strID.length !=0) {
+            [weakSelf setYIIParameters:par withValue:strID];
 
-        if (!kISEmpty([model valueForKey:[[GModelManger shared].dbModelClass g_setDBQueryMarker]])) {
+        }else if (!kISEmpty([model valueForKey:[[GModelManger shared].dbModelClass g_setDBQueryMarker]])) {
             [weakSelf setYIIParameters:par withModel:model];
 
-        }else if(strID){
-            [weakSelf setYIIParameters:par withValue:strID];
         }else{
             NSAssert(0, @"chekcQueryDBWeherMark");
         }
-      [[GModelManger shared].dbShard deleteFromTable:[[GModelManger shared].dbModelClass g_setTableNameMarker] whereParameters:par];  //插入一条数据
+      [[GModelManger shared].dbShard deleteFromTable:[[GModelManger shared].dbModelClass g_setDBTableNameMarker] whereParameters:par];  //插入一条数据
     
     }];
 }
@@ -169,7 +172,7 @@ GHELPER_SHARED(GModelManger)
     
     [[GModelManger shared].dbShard  inDatabase:^{
         
-        array = [[GModelManger shared].dbShard queryFromTable:[[GModelManger shared].dbModelClass g_setTableNameMarker] model:class whereParameters:nil];
+        array = [[GModelManger shared].dbShard queryFromTable:[[GModelManger shared].dbModelClass g_setDBTableNameMarker] model:class whereParameters:nil];
         NSLog(@"FMDB储存的数据为%@",array);
         
     }];
@@ -191,7 +194,7 @@ GHELPER_SHARED(GModelManger)
             [self setYIIParameters:par withValue:strId];
         }
        [[GModelManger shared].dbShard  inDatabase:^{
-        array = [[GModelManger shared].dbShard queryFromTable:[[GModelManger shared].dbModelClass g_setTableNameMarker] model:[[GModelManger shared].dbModelClass class] whereParameters:par];
+        array = [[GModelManger shared].dbShard queryFromTable:[[GModelManger shared].dbModelClass g_setDBTableNameMarker] model:[[GModelManger shared].dbModelClass class] whereParameters:par];
            [arrayTemp addObjectsFromArray:array];
         }];
         NSLog(@"FMDB储存的数据为%@",array );
@@ -212,7 +215,7 @@ GHELPER_SHARED(GModelManger)
         YIIParameters* parameters = [[YIIParameters alloc]init];
         [self setYIIParameters:parameters withModel:model];
      
-        [[GModelManger shared].dbShard deleteFromTable:[[GModelManger shared].dbModelClass g_setTableNameMarker] whereParameters:parameters];
+        [[GModelManger shared].dbShard deleteFromTable:[[GModelManger shared].dbModelClass g_setDBTableNameMarker] whereParameters:parameters];
 
         [[GModelManger shared].dbShard inDatabase:^{
             [self insertWithModel:model];
@@ -228,7 +231,7 @@ GHELPER_SHARED(GModelManger)
 //    YIIParameters* parameters = [[YIIParameters alloc]init];
 //    [parameters andWhere:@"userIDString" value:model.userIDString relationType:YIIParametersRelationTypeEqualTo];
 //    [[GModelManger shared].dbShard inTransaction:^(BOOL *rollback) {
-//        [[GModelManger shared].dbShard updateTable:[self g_setTableNameMarker] dictionary:@{@"friend_type": @(model.friend_type)} whereParameters:parameters];
+//        [[GModelManger shared].dbShard updateTable:[self g_setDBTableNameMarker] dictionary:@{@"friend_type": @(model.friend_type)} whereParameters:parameters];
 //    }];
     
     
@@ -248,7 +251,7 @@ GHELPER_SHARED(GModelManger)
     [self setYIIParameters:parameters withModel:model];
     __block NSInteger count = 0;
     [[GModelManger shared].dbShard  inDatabase:^{
-        count =  [[GModelManger shared].dbShard numberOfItemsFromTable:[[GModelManger shared].dbModelClass g_setTableNameMarker] whereParameters:parameters];
+        count =  [[GModelManger shared].dbShard numberOfItemsFromTable:[[GModelManger shared].dbModelClass g_setDBTableNameMarker] whereParameters:parameters];
         
     }];
     if (count !=0) {
@@ -259,6 +262,8 @@ GHELPER_SHARED(GModelManger)
     
 }
 +(void)dbTableChangeBLock:(void (^)(void))block{
+  
+    [GModelManger free];
     _dbShard = nil;
     if (block) {
         block();
