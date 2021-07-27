@@ -7,7 +7,6 @@
 
 #import "ViewController.h"
 #import "SecondModel.h"
-#import "SecondViewController.h"
 #import "NSObject+swizzle.h"
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *testArchiveModel;
@@ -19,28 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
-//    UIButton* button = [UIButton g_Init:^(UIButton * _Nonnull gs) {
-//        gs.g_chain.backgroundColor(kRedColor);
-//    } withSuperView:self.view withMasonry:^(MASConstraintMaker * _Nonnull make, UIButton * _Nonnull gs) {
-//        make.size.mas_equalTo(CGSizeMake(100, 100));
-//        make.left.top.offset(100);
-//    } withAction:^(UIButton * _Nonnull gs) {
-//        SecondViewController* vc = [[SecondViewController alloc]init];
-//        [self.navigationController pushViewController:vc animated:YES];
-//
-//    }];
-//
-//
-//
-//
-//    NSData *tempArchive = [NSKeyedArchiver archivedDataWithRootObject:button];
-//    UIButton* button2 =  [NSKeyedUnarchiver unarchiveObjectWithData:tempArchive];
-//    [self.view addSubview:button2];
-//    [button2 mas_remakeConstraints:^(MASConstraintMaker *make) {
-//        make.size.mas_equalTo(CGSizeMake(100, 100));
-//        make.left.top.offset(300);
-//    }];
 //
     // Do any additional setup after loading the view.
 }
