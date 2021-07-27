@@ -24,7 +24,7 @@
     _gradientLayer.frame = frame;//设置渐变图层的大小
     if (colors == nil) {
         //颜色为空时预置的颜色
-        _gradientLayer.colors = @[(__bridge id)kColorHexString(@"#F18030").CGColor,(__bridge id)kColorHexString(@"#F7B46A").CGColor];
+        _gradientLayer.colors = @[(__bridge id)kColorStringHex(@"#F18030").CGColor,(__bridge id)kColorStringHex(@"#F7B46A").CGColor];
     }else {
         _gradientLayer.colors = colors;
     }
