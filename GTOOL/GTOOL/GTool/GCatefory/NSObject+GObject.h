@@ -51,7 +51,7 @@ typedef NS_ENUM(NSInteger,LanguageType){
 #define kNavBarHeight 44.0 //导航栏高度
 #define kTopHeight (kStatusBarHeight + kNavBarHeight) //状态栏+导航栏 高度
 
-#define kTabBarXSurPlusHeigt  (IPHONEX? 34:0)    //TabBar iPhoneX多余的高度
+#define kTabBarXSurPlusHeigt  (kISIphoneX()? 34:0)     //TabBar iPhoneX多余的高度
 #define kTabBarHeight ([[UIApplication sharedApplication] statusBarFrame].size.height>20?49+kTabBarSurPlusHeigt:49)//tabBar高度
 
 #define kAvailableHeight (SCREEN_HEIGHT -kTopHeight - kTabBarHeight)
@@ -72,9 +72,12 @@ UIColor* kColorRGBA(NSInteger r,NSInteger g,NSInteger b,float a);
 
 UIImage* kImageName(NSString*);
 UIImage* kImageFile(NSString*);
+NSURL* kUrl(NSString* str);
 
 BOOL kISEmpty(NSObject*);
-BOOL kIsIphoneX(void);
+BOOL kISNoEmpty(NSObject*);
+BOOL kISIphoneX(void);
+
 
 CGFloat kMainScreenWide(void);
 CGFloat kMainScreenHeight(void);
@@ -86,6 +89,19 @@ NSString* kStringSafe(NSObject*);
 UIFont* kAdaptedFont(CGFloat);
 
 UIViewController* kGetCurrentVC(void);
+
+NSString* kLanguage(NSString* str);
+
+UIFont* kFontMedium(int fontSize);
+UIFont* kFontRegular(int fontSize);
+
+void kShowLoading(void);
+void kShowToast(NSString* str);
+void kHidLoading(void);
+void kShowLoadingWithText(NSString* str);
+
+void kUserDefaultSet(NSObject*obj,NSString*key);
+id kUserDefaultGet(NSString*key);
 
 UIView* kMasLastView(void);
 

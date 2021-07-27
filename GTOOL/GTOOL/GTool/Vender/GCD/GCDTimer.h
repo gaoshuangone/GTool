@@ -56,3 +56,14 @@
 
 - (void)cancel;
 @end
+
+/*
+ //    _timerGCD= [[GCDTimer alloc]init];
+ //    [_timerGCD eventAutoTimesEvent:^(NSInteger times) {
+ //        NSLog(@"%ld",(long)times);
+ //
+ //    } completEvent:^{
+ //        NSLog(@"completEvent");
+ //        //不用担心内存泄漏，非必须cancel
+ //    } timeIntervalWithSecs:1 withTimes:10 ];
+ */

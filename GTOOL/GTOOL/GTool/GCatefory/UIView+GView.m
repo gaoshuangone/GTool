@@ -108,7 +108,24 @@
                              self.frame.size.height , boundsHeight);
     
 }
+- (CGFloat)centerX {
+    return self.center.x;
+}
 
+
+- (void)setCenterX:(CGFloat)centerX {
+    self.center = CGPointMake(centerX, self.center.y);
+}
+
+
+- (CGFloat)centerY {
+    return self.center.y;
+}
+
+
+- (void)setCenterY:(CGFloat)centerY {
+    self.center = CGPointMake(self.center.x, centerY);
+}
 - (UIViewController*)viewController {
     for (UIView* next = [self superview]; next; next = next.superview) {
         UIResponder* nextResponder = [next nextResponder];

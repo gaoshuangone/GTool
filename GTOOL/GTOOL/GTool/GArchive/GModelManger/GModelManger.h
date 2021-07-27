@@ -46,10 +46,10 @@ NS_ASSUME_NONNULL_BEGIN
 +(void)updateWithModel:(GModel*)model;
 
  /// 查询所有数据
-+(NSArray<GModel*>*)queryFromTableWithMarkClass:(Class)class;
++(NSArray<GModel*>*)queryFromTableWithMarkClass:(Class)clasS;
 
  /// 根据id查询批量数据
-+(NSArray<GModel*>*)queryFromTableWithIDArray:(NSArray<NSString*>*)idArray withMarkClass:(Class)class;
++(NSArray<GModel*>*)queryFromTableWithIDArray:(NSArray<NSString*>*)idArray withMarkClass:(Class)clasS;
 
 /// 是否已经储存过了
 +(BOOL)isContainsWith:(GModel*)model;

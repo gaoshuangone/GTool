@@ -7,6 +7,7 @@
 //
 
 #import "NSObject+GObject.h"
+#import "SVProgressHUD.h"
 @implementation NSObject (GObject)
 
 UIColor* kColorStringHex(NSString*color){
@@ -81,6 +82,13 @@ UIImage* kImageFile(NSString* str){
     return [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:str ofType:nil]];
 
 }
+NSURL* kUrl(NSString* str){
+    return [NSURL URLWithString:str];
+}
+BOOL kISNoEmpty(NSObject*obj){
+    return !kISEmpty(obj);
+
+}
 BOOL kISEmpty(NSObject *obj){
     
     if (obj==nil) {
@@ -142,7 +150,7 @@ CGFloat kAdaptedHeight(CGFloat height){
 UIFont* kAdaptedFont(CGFloat fontSize){
     return  [UIFont systemFontOfSize:kAdaptedWide(fontSize)];
 }
-BOOL kIsIphoneX(void){
+BOOL kISIphoneX(void){
     BOOL iPhoneXSeries = NO;
     if (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPhone) {
         return iPhoneXSeries;
@@ -169,6 +177,9 @@ NSString* kStringSafe(NSObject* obj){
     return @"";
     
 }
+
+
+
 UIViewController* kGetCurrentVC(void){
     UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
     
@@ -203,41 +214,46 @@ UIViewController* kGetCurrentVCFrom(UIViewController *rootVC){
     return currentVC;
 }
 
-- (UIViewController *)g_getCurrentVC
-{
-    UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+NSString* kLanguage(NSString* str){
     
-    UIViewController *currentVC = [self getCurrentVCFrom:rootViewController];
+//      return NSLocalizedStringFromTable(str, @"Localizable", nil);
     
-    return currentVC;
+    return  NSLocalizedStringFromTableInBundle(str, @"Localizable", [NSObject g_getCurrentLanguageBundle], nil);
+//    NSLocalizedString(key, comment)  [[NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"appLanguage"]] ofType:@"lproj"]] localizedStringForKey:(key) value:comment table:nil]
 }
-- (UIViewController *)getCurrentVCFrom:(UIViewController *)rootVC
-{
-    UIViewController *currentVC;
-    
-    if ([rootVC presentedViewController]) {
-        // 视图是被presented出来的
-        
-        rootVC = [rootVC presentedViewController];
-    }
-    
-    if ([rootVC isKindOfClass:[UITabBarController class]]) {
-        // 根视图为UITabBarController
-        
-        currentVC = [self getCurrentVCFrom:[(UITabBarController *)rootVC selectedViewController]];
-        
-    } else if ([rootVC isKindOfClass:[UINavigationController class]]){
-        // 根视图为UINavigationController
-        
-        currentVC = [self getCurrentVCFrom:[(UINavigationController *)rootVC visibleViewController]];
-        
-    } else {
-        // 根视图为非导航类
-        
-        currentVC = rootVC;
-    }
-    
-    return currentVC;
+
+UIFont* kFontMedium(int fontSize){
+    return [UIFont fontWithName:@"Roboto-Medium" size:fontSize];
+}
+UIFont* kFontRegular(int fontSize){
+    return [UIFont fontWithName:@"Roboto-Regular" size:fontSize];
+}
+void kShowLoading(void){
+
+    [SVProgressHUD  show];
+
+}
+void kHidLoading(void){
+     [SVProgressHUD dismiss];
+
+}
+void kShowToast(NSString* str){
+    kHidLoading();
+    [SVProgressHUD showImage:[UIImage imageNamed:@""] status:str];
+    [SVProgressHUD dismissWithDelay:1.2f];
+
+}
+void kShowLoadingWithText(NSString* str){
+    kHidLoading();
+    [SVProgressHUD showWithStatus:str];
+}
+void kUserDefaultSet(NSObject*obj,NSString*key){
+    [[NSUserDefaults standardUserDefaults] setObject:obj forKey:key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+id kUserDefaultGet(NSString*key){
+    return [[NSUserDefaults standardUserDefaults] valueForKey:key];
 }
 UIView* kMasLastView(void){
     

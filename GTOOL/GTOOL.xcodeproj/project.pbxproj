@@ -50,6 +50,11 @@
 		3B0892CA26AFEDD000ED24DB /* UIViewController+GSSkip.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0892C926AFEDD000ED24DB /* UIViewController+GSSkip.m */; };
 		3B0892CF26AFF0F600ED24DB /* UIView+Effects.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0892CD26AFF0F600ED24DB /* UIView+Effects.m */; };
 		3B0892D226AFF1A700ED24DB /* UIView+GradualLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0892D026AFF1A700ED24DB /* UIView+GradualLayer.m */; };
+		3B08937026B0008300ED24DB /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08936726B0008300ED24DB /* SVRadialGradientLayer.m */; };
+		3B08937126B0008300ED24DB /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08936A26B0008300ED24DB /* SVProgressAnimatedView.m */; };
+		3B08937226B0008300ED24DB /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08936C26B0008300ED24DB /* SVProgressHUD.m */; };
+		3B08937326B0008300ED24DB /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08936D26B0008300ED24DB /* SVIndefiniteAnimatedView.m */; };
+		3B08937426B0008300ED24DB /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3B08936E26B0008300ED24DB /* SVProgressHUD.bundle */; };
 		D35D93072588C78F004A0D42 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D35D93062588C78F004A0D42 /* AppDelegate.m */; };
 		D35D930A2588C78F004A0D42 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D35D93092588C78F004A0D42 /* SceneDelegate.m */; };
 		D35D93102588C78F004A0D42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D35D930E2588C78F004A0D42 /* Main.storyboard */; };
@@ -155,6 +160,15 @@
 		3B0892CE26AFF0F600ED24DB /* UIView+Effects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Effects.h"; sourceTree = "<group>"; };
 		3B0892D026AFF1A700ED24DB /* UIView+GradualLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GradualLayer.m"; sourceTree = "<group>"; };
 		3B0892D126AFF1A700ED24DB /* UIView+GradualLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GradualLayer.h"; sourceTree = "<group>"; };
+		3B08936726B0008300ED24DB /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		3B08936826B0008300ED24DB /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		3B08936926B0008300ED24DB /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		3B08936A26B0008300ED24DB /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
+		3B08936B26B0008300ED24DB /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		3B08936C26B0008300ED24DB /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		3B08936D26B0008300ED24DB /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		3B08936E26B0008300ED24DB /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		3B08936F26B0008300ED24DB /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
 		D35B2077264FB2D50037A832 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		D35D93022588C78F004A0D42 /* GTOOL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTOOL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D35D93052588C78F004A0D42 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -263,6 +277,7 @@
 		3B08925726AA9DAC00ED24DB /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				3B08936626B0008300ED24DB /* SVProgressHUD */,
 				3B08928126AA9DAC00ED24DB /* FMDB */,
 				3B08927626AA9DAC00ED24DB /* GCD */,
 				3B08925B26AA9DAC00ED24DB /* Masonry */,
@@ -379,6 +394,22 @@
 			path = other;
 			sourceTree = "<group>";
 		};
+		3B08936626B0008300ED24DB /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				3B08936726B0008300ED24DB /* SVRadialGradientLayer.m */,
+				3B08936826B0008300ED24DB /* SVIndefiniteAnimatedView.h */,
+				3B08936926B0008300ED24DB /* SVProgressHUD.h */,
+				3B08936A26B0008300ED24DB /* SVProgressAnimatedView.m */,
+				3B08936B26B0008300ED24DB /* SVRadialGradientLayer.h */,
+				3B08936C26B0008300ED24DB /* SVProgressHUD.m */,
+				3B08936D26B0008300ED24DB /* SVIndefiniteAnimatedView.m */,
+				3B08936E26B0008300ED24DB /* SVProgressHUD.bundle */,
+				3B08936F26B0008300ED24DB /* SVProgressAnimatedView.h */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		D35D92F92588C78F004A0D42 = {
 			isa = PBXGroup;
 			children = (
@@ -481,6 +512,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B08937426B0008300ED24DB /* SVProgressHUD.bundle in Resources */,
 				D35D93152588C793004A0D42 /* LaunchScreen.storyboard in Resources */,
 				D35D93122588C793004A0D42 /* Assets.xcassets in Resources */,
 				3B0892BE26AAA3D600ED24DB /* ViewController.xib in Resources */,
@@ -507,6 +539,7 @@
 				3B0892A526AA9DAC00ED24DB /* MASCompositeConstraint.m in Sources */,
 				D36E904925946A7D00DFA4AF /* SecondModel.m in Sources */,
 				3B08929B26AA9DAC00ED24DB /* GModel.m in Sources */,
+				3B08937126B0008300ED24DB /* SVProgressAnimatedView.m in Sources */,
 				3B0892A826AA9DAC00ED24DB /* NSArray+MASAdditions.m in Sources */,
 				3B0892A926AA9DAC00ED24DB /* View+MASAdditions.m in Sources */,
 				D35D93072588C78F004A0D42 /* AppDelegate.m in Sources */,
@@ -516,8 +549,10 @@
 				3B08929826AA9DAC00ED24DB /* YIIParameters.m in Sources */,
 				3B08929C26AA9DAC00ED24DB /* GBaseChainModel.m in Sources */,
 				D36E905D2594867800DFA4AF /* DBUserInfoModel.m in Sources */,
+				3B08937026B0008300ED24DB /* SVRadialGradientLayer.m in Sources */,
 				3B0892B526AA9DAD00ED24DB /* FMDatabaseQueue.m in Sources */,
 				3B0892A426AA9DAC00ED24DB /* ViewController+MASAdditions.m in Sources */,
+				3B08937326B0008300ED24DB /* SVIndefiniteAnimatedView.m in Sources */,
 				3B0892AB26AA9DAC00ED24DB /* MASViewConstraint.m in Sources */,
 				3B0892A026AA9DAC00ED24DB /* GButtonChainModel.m in Sources */,
 				3B0892A626AA9DAC00ED24DB /* MASConstraintMaker.m in Sources */,
@@ -532,6 +567,7 @@
 				D35D93B8258A08F8004A0D42 /* SecondViewController.m in Sources */,
 				3B0892B226AA9DAD00ED24DB /* WYAlertView.m in Sources */,
 				3B08929626AA9DAC00ED24DB /* UIAlertController+GAlert.m in Sources */,
+				3B08937226B0008300ED24DB /* SVProgressHUD.m in Sources */,
 				3B0892A126AA9DAC00ED24DB /* ZJAnimationPopView.m in Sources */,
 				3B08929F26AA9DAC00ED24DB /* GLabelChainModel.m in Sources */,
 				D35D93182588C793004A0D42 /* main.m in Sources */,
