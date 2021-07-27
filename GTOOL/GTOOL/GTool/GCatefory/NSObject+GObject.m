@@ -241,9 +241,7 @@ UIViewController* kGetCurrentVCFrom(UIViewController *rootVC){
 }
 UIView* kMasLastView(void){
     
-    if (kISEmpty([GSharedClass shared].masViewLast)) {
-        NSAssert(NO, @"参考mas_makeConstraints_lastView");
-    }
+   
     return [GSharedClass shared].masViewLast;
 }
 #pragma -mark 多语言

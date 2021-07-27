@@ -81,7 +81,7 @@
 }
 - (IBAction)manonry:(id)sender {
     
-    [ UIView overrideMethod:@selector(mas_makeConstraints:) withMethod:@selector(mas_makeConstraints_lastView)];
+    [UIView overrideMethod:@selector(mas_makeConstraints:) withMethod:@selector(mas_makeConstraints_lastView)];
 
     UILabel* label =  [UILabel g_Init:^(UILabel * _Nonnull gs) {
         gs.g_chain.backgroundColor(kOrangeColor);
@@ -100,22 +100,15 @@
         make.size.mas_equalTo(CGSizeMake(50, 50));
     }];
     
-    //    NSData *tempArchive = [NSKeyedArchiver archivedDataWithRootObject:button];
-    //    UIButton* button2 =  [NSKeyedUnarchiver unarchiveObjectWithData:tempArchive];
-    //    [self.view addSubview:button2];
-    //    [button2 mas_remakeConstraints:^(MASConstraintMaker *make) {
-    //        make.size.mas_equalTo(CGSizeMake(100, 100));
-    //        make.left.top.offset(300);
-    //    }];
     
-//    [UILabel g_Init:^(UILabel * _Nonnull gs) {
-//        gs.g_chain.backgroundColor(kOrangeColor);
-//    } withSuperView:self.view withMasonry:^(MASConstraintMaker * _Nonnull make, UILabel * _Nonnull gs) {
-//        make.left.equalTo(kMasLastView().mas_right).offset(20);
-//        make.top.equalTo(label);
-//
-//        make.size.mas_equalTo(CGSizeMake(50, 50));
-//    }];
+    [UIImageView g_Init:^(UIImageView * _Nonnull gs) {
+        gs.g_chain.backgroundColor(kRedColor).cornerRadius(100).shadowColor(kYellowColor.CGColor).shadowOffset(CGSizeMake(-3, 3)).shadowOpacity(1);
+        gs.g_chain.borderColor([UIColor greenColor].CGColor).borderWidth(5);
+    } withSuperView:self.view withMasonry:^(MASConstraintMaker * _Nonnull make, UIImageView * _Nonnull gs) {
+        make.top.equalTo(kMasLastView().mas_bottom).offset(100);
+        make.centerX.equalTo(kMasLastView());
+        make.size.mas_equalTo(CGSizeMake(200, 200));
+    }];
     
     
     

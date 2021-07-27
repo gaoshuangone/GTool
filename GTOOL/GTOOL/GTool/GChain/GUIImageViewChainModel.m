@@ -38,4 +38,22 @@ G_CHAIN_IMAGEVIEW_IMPLEMENTATION(highlighted, setHighlighted, BOOL);
     return model;
 }
 
++(UIImageView*)g_Init:(void (^)(UIImageView* gs))initBlock{
+    UIImageView* imageView = [[UIImageView alloc]init];
+    if (initBlock) {
+        initBlock(imageView);
+    }
+    return imageView;
+}
+
++(UIImageView*)g_Init:(void (^)(UIImageView* gs))initBlock withSuperView:(UIView*)superView withMasonry:(void (^)(MASConstraintMaker *make,UIImageView* gs))masBlock{
+    UIImageView* imageView = [UIImageView g_Init:initBlock];
+    [superView addSubview:imageView];
+    if (masBlock) {
+        [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            masBlock(make,imageView);
+        }];
+    }
+    return imageView;
+}
 @end

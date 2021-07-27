@@ -47,6 +47,9 @@
 		3B0892BD26AAA3D600ED24DB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0892BB26AAA3D600ED24DB /* ViewController.m */; };
 		3B0892BE26AAA3D600ED24DB /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B0892BC26AAA3D600ED24DB /* ViewController.xib */; };
 		3B0892C426AECAEC00ED24DB /* NSObject+swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0892C226AECAEC00ED24DB /* NSObject+swizzle.m */; };
+		3B0892CA26AFEDD000ED24DB /* UIViewController+GSSkip.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0892C926AFEDD000ED24DB /* UIViewController+GSSkip.m */; };
+		3B0892CF26AFF0F600ED24DB /* UIView+Effects.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0892CD26AFF0F600ED24DB /* UIView+Effects.m */; };
+		3B0892D226AFF1A700ED24DB /* UIView+GradualLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0892D026AFF1A700ED24DB /* UIView+GradualLayer.m */; };
 		D35D93072588C78F004A0D42 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D35D93062588C78F004A0D42 /* AppDelegate.m */; };
 		D35D930A2588C78F004A0D42 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D35D93092588C78F004A0D42 /* SceneDelegate.m */; };
 		D35D93102588C78F004A0D42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D35D930E2588C78F004A0D42 /* Main.storyboard */; };
@@ -146,6 +149,12 @@
 		3B0892C026AAC23A00ED24DB /* GModelProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GModelProtocol.h; sourceTree = "<group>"; };
 		3B0892C226AECAEC00ED24DB /* NSObject+swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+swizzle.m"; sourceTree = "<group>"; };
 		3B0892C326AECAEC00ED24DB /* NSObject+swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+swizzle.h"; sourceTree = "<group>"; };
+		3B0892C826AFEDD000ED24DB /* UIViewController+GSSkip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+GSSkip.h"; sourceTree = "<group>"; };
+		3B0892C926AFEDD000ED24DB /* UIViewController+GSSkip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+GSSkip.m"; sourceTree = "<group>"; };
+		3B0892CD26AFF0F600ED24DB /* UIView+Effects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Effects.m"; sourceTree = "<group>"; };
+		3B0892CE26AFF0F600ED24DB /* UIView+Effects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Effects.h"; sourceTree = "<group>"; };
+		3B0892D026AFF1A700ED24DB /* UIView+GradualLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GradualLayer.m"; sourceTree = "<group>"; };
+		3B0892D126AFF1A700ED24DB /* UIView+GradualLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GradualLayer.h"; sourceTree = "<group>"; };
 		D35B2077264FB2D50037A832 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		D35D93022588C78F004A0D42 /* GTOOL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTOOL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D35D93052588C78F004A0D42 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -205,6 +214,8 @@
 				3B08923E26AA9DAC00ED24DB /* UIAlertController+GAlert.m */,
 				3B08923826AA9DAC00ED24DB /* UIView+GView.h */,
 				3B08923F26AA9DAC00ED24DB /* UIView+GView.m */,
+				3B0892C826AFEDD000ED24DB /* UIViewController+GSSkip.h */,
+				3B0892C926AFEDD000ED24DB /* UIViewController+GSSkip.m */,
 			);
 			path = GCatefory;
 			sourceTree = "<group>";
@@ -267,30 +278,30 @@
 			isa = PBXGroup;
 			children = (
 				3B08925C26AA9DAC00ED24DB /* MASCompositeConstraint.h */,
-				3B08925D26AA9DAC00ED24DB /* NSLayoutConstraint+MASDebugAdditions.m */,
+				3B08926A26AA9DAC00ED24DB /* MASCompositeConstraint.m */,
+				3B08926826AA9DAC00ED24DB /* MASConstraint.h */,
+				3B08927126AA9DAC00ED24DB /* MASConstraint.m */,
 				3B08925E26AA9DAC00ED24DB /* MASConstraint+Private.h */,
-				3B08925F26AA9DAC00ED24DB /* MASLayoutConstraint.h */,
-				3B08926026AA9DAC00ED24DB /* NSArray+MASShorthandAdditions.h */,
 				3B08926126AA9DAC00ED24DB /* MASConstraintMaker.h */,
-				3B08926226AA9DAC00ED24DB /* View+MASAdditions.h */,
-				3B08926326AA9DAC00ED24DB /* NSArray+MASAdditions.h */,
+				3B08926B26AA9DAC00ED24DB /* MASConstraintMaker.m */,
+				3B08925F26AA9DAC00ED24DB /* MASLayoutConstraint.h */,
+				3B08926C26AA9DAC00ED24DB /* MASLayoutConstraint.m */,
+				3B08927026AA9DAC00ED24DB /* Masonry.h */,
 				3B08926426AA9DAC00ED24DB /* MASUtilities.h */,
 				3B08926526AA9DAC00ED24DB /* MASViewAttribute.h */,
-				3B08926626AA9DAC00ED24DB /* ViewController+MASAdditions.m */,
+				3B08927426AA9DAC00ED24DB /* MASViewAttribute.m */,
 				3B08926726AA9DAC00ED24DB /* MASViewConstraint.h */,
-				3B08926826AA9DAC00ED24DB /* MASConstraint.h */,
-				3B08926926AA9DAC00ED24DB /* NSLayoutConstraint+MASDebugAdditions.h */,
-				3B08926A26AA9DAC00ED24DB /* MASCompositeConstraint.m */,
-				3B08926B26AA9DAC00ED24DB /* MASConstraintMaker.m */,
-				3B08926C26AA9DAC00ED24DB /* MASLayoutConstraint.m */,
+				3B08927326AA9DAC00ED24DB /* MASViewConstraint.m */,
+				3B08926326AA9DAC00ED24DB /* NSArray+MASAdditions.h */,
 				3B08926D26AA9DAC00ED24DB /* NSArray+MASAdditions.m */,
+				3B08926026AA9DAC00ED24DB /* NSArray+MASShorthandAdditions.h */,
+				3B08926926AA9DAC00ED24DB /* NSLayoutConstraint+MASDebugAdditions.h */,
+				3B08925D26AA9DAC00ED24DB /* NSLayoutConstraint+MASDebugAdditions.m */,
+				3B08926226AA9DAC00ED24DB /* View+MASAdditions.h */,
 				3B08926E26AA9DAC00ED24DB /* View+MASAdditions.m */,
 				3B08926F26AA9DAC00ED24DB /* View+MASShorthandAdditions.h */,
-				3B08927026AA9DAC00ED24DB /* Masonry.h */,
-				3B08927126AA9DAC00ED24DB /* MASConstraint.m */,
 				3B08927226AA9DAC00ED24DB /* ViewController+MASAdditions.h */,
-				3B08927326AA9DAC00ED24DB /* MASViewConstraint.m */,
-				3B08927426AA9DAC00ED24DB /* MASViewAttribute.m */,
+				3B08926626AA9DAC00ED24DB /* ViewController+MASAdditions.m */,
 			);
 			name = Masonry;
 			path = Masonry/Masonry;
@@ -299,15 +310,15 @@
 		3B08927626AA9DAC00ED24DB /* GCD */ = {
 			isa = PBXGroup;
 			children = (
-				3B08927726AA9DAC00ED24DB /* GCDSemaphore.h */,
-				3B08927826AA9DAC00ED24DB /* GCDQueue.m */,
-				3B08927926AA9DAC00ED24DB /* GCDTimer.m */,
-				3B08927A26AA9DAC00ED24DB /* GCDGroup.m */,
 				3B08927B26AA9DAC00ED24DB /* GCD.h */,
-				3B08927C26AA9DAC00ED24DB /* GCDSemaphore.m */,
-				3B08927D26AA9DAC00ED24DB /* GCDQueue.h */,
 				3B08927E26AA9DAC00ED24DB /* GCDGroup.h */,
+				3B08927A26AA9DAC00ED24DB /* GCDGroup.m */,
+				3B08927D26AA9DAC00ED24DB /* GCDQueue.h */,
+				3B08927826AA9DAC00ED24DB /* GCDQueue.m */,
+				3B08927726AA9DAC00ED24DB /* GCDSemaphore.h */,
+				3B08927C26AA9DAC00ED24DB /* GCDSemaphore.m */,
 				3B08927F26AA9DAC00ED24DB /* GCDTimer.h */,
+				3B08927926AA9DAC00ED24DB /* GCDTimer.m */,
 			);
 			path = GCD;
 			sourceTree = "<group>";
@@ -357,6 +368,17 @@
 			path = GModelManger;
 			sourceTree = "<group>";
 		};
+		3B0892CC26AFF0A600ED24DB /* other */ = {
+			isa = PBXGroup;
+			children = (
+				3B0892CE26AFF0F600ED24DB /* UIView+Effects.h */,
+				3B0892CD26AFF0F600ED24DB /* UIView+Effects.m */,
+				3B0892D126AFF1A700ED24DB /* UIView+GradualLayer.h */,
+				3B0892D026AFF1A700ED24DB /* UIView+GradualLayer.m */,
+			);
+			path = other;
+			sourceTree = "<group>";
+		};
 		D35D92F92588C78F004A0D42 = {
 			isa = PBXGroup;
 			children = (
@@ -376,7 +398,6 @@
 		D35D93042588C78F004A0D42 /* GTOOL */ = {
 			isa = PBXGroup;
 			children = (
-				3B08923426AA9DAC00ED24DB /* GTool */,
 				D35D93052588C78F004A0D42 /* AppDelegate.h */,
 				D35D93062588C78F004A0D42 /* AppDelegate.m */,
 				D35D93082588C78F004A0D42 /* SceneDelegate.h */,
@@ -392,6 +413,8 @@
 				D36E90622594AD0700DFA4AF /* ThreeModel.m */,
 				D36E905B2594867800DFA4AF /* DBUserInfoModel.h */,
 				D36E905C2594867800DFA4AF /* DBUserInfoModel.m */,
+				3B0892CC26AFF0A600ED24DB /* other */,
+				3B08923426AA9DAC00ED24DB /* GTool */,
 				D35D930E2588C78F004A0D42 /* Main.storyboard */,
 				D35B2077264FB2D50037A832 /* PrefixHeader.pch */,
 				D35D93112588C793004A0D42 /* Assets.xcassets */,
@@ -487,6 +510,7 @@
 				3B0892A826AA9DAC00ED24DB /* NSArray+MASAdditions.m in Sources */,
 				3B0892A926AA9DAC00ED24DB /* View+MASAdditions.m in Sources */,
 				D35D93072588C78F004A0D42 /* AppDelegate.m in Sources */,
+				3B0892CF26AFF0F600ED24DB /* UIView+Effects.m in Sources */,
 				3B0892B126AA9DAD00ED24DB /* GCDSemaphore.m in Sources */,
 				3B08929A26AA9DAC00ED24DB /* GModelManger.m in Sources */,
 				3B08929826AA9DAC00ED24DB /* YIIParameters.m in Sources */,
@@ -514,9 +538,11 @@
 				3B0892A726AA9DAC00ED24DB /* MASLayoutConstraint.m in Sources */,
 				D35D930A2588C78F004A0D42 /* SceneDelegate.m in Sources */,
 				3B08929926AA9DAC00ED24DB /* YIIFMDB.m in Sources */,
+				3B0892D226AFF1A700ED24DB /* UIView+GradualLayer.m in Sources */,
 				3B0892A326AA9DAC00ED24DB /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				3B0892BD26AAA3D600ED24DB /* ViewController.m in Sources */,
 				3B0892B726AA9DAD00ED24DB /* FMDatabase.m in Sources */,
+				3B0892CA26AFEDD000ED24DB /* UIViewController+GSSkip.m in Sources */,
 				3B0892B626AA9DAD00ED24DB /* FMDatabaseAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

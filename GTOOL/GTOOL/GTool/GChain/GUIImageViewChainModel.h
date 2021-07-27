@@ -23,5 +23,9 @@ G_CHAIN_PROPERTY GUIImageViewChainModel *_Nullable(^highlighted)(BOOL highlighte
 
 -(GUIImageViewChainModel *)g_chain;
 
++(UIImageView*)g_Init:(void (^)(UIImageView* gs))initBlock;
+
++(UIImageView*)g_Init:(void (^)(UIImageView* gs))initBlock withSuperView:(UIView*)superView withMasonry:(void (^)(MASConstraintMaker *make,UIImageView* gs))masBlock;
+
 @end
 NS_ASSUME_NONNULL_END
