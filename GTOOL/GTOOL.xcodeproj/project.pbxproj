@@ -252,13 +252,13 @@
 		3B08925726AA9DAC00ED24DB /* Vender */ = {
 			isa = PBXGroup;
 			children = (
-				3B08925826AA9DAC00ED24DB /* ZJAnimationPopView.m */,
-				3B08925B26AA9DAC00ED24DB /* Masonry */,
-				3B08927626AA9DAC00ED24DB /* GCD */,
-				3B08928026AA9DAC00ED24DB /* WYAlertView.m */,
 				3B08928126AA9DAC00ED24DB /* FMDB */,
+				3B08927626AA9DAC00ED24DB /* GCD */,
+				3B08925B26AA9DAC00ED24DB /* Masonry */,
 				3B08929126AA9DAC00ED24DB /* WYAlertView.h */,
+				3B08928026AA9DAC00ED24DB /* WYAlertView.m */,
 				3B08929226AA9DAC00ED24DB /* ZJAnimationPopView.h */,
+				3B08925826AA9DAC00ED24DB /* ZJAnimationPopView.m */,
 			);
 			path = Vender;
 			sourceTree = "<group>";
