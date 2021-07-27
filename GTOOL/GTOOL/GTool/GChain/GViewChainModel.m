@@ -107,8 +107,11 @@
     }
     
 }
--(UIView*)g_copyView:(UIView*)view{
++(__kindof UIView*)g_copyView:(UIView*)view{
     NSData *tempArchive = [NSKeyedArchiver archivedDataWithRootObject:view];
     return [NSKeyedUnarchiver unarchiveObjectWithData:tempArchive];
 }
 @end
+
+
+

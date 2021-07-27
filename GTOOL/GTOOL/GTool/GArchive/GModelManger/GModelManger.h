@@ -7,7 +7,6 @@
 
 #import <Foundation/Foundation.h>
 #import "NSObject+GObject.h"
-#import "GDBMangerProtocol.h"
 @class GModel;
 NS_ASSUME_NONNULL_BEGIN
 

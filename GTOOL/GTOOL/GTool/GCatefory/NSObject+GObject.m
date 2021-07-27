@@ -7,7 +7,6 @@
 //
 
 #import "NSObject+GObject.h"
-
 @implementation NSObject (GObject)
 
 UIColor* kColorStringHex(NSString*color){
@@ -240,7 +239,13 @@ UIViewController* kGetCurrentVCFrom(UIViewController *rootVC){
     
     return currentVC;
 }
-
+UIView* kMasLastView(void){
+    
+    if (kISEmpty([GSharedClass shared].masViewLast)) {
+        NSAssert(NO, @"参考mas_makeConstraints_lastView");
+    }
+    return [GSharedClass shared].masViewLast;
+}
 #pragma -mark 多语言
 
 /// 获取手机原始系统设置的语言
@@ -369,5 +374,12 @@ UIViewController* kGetCurrentVCFrom(UIViewController *rootVC){
     return [NSBundle bundleWithPath:languagePath];//获取自定义的bundle下的文件路径的bundle
     
 }
+
+@end
+
+
+@implementation GSharedClass
+GHELPER_SHARED(GSharedClass)
+
 
 @end

@@ -29,5 +29,11 @@
 @property (nonatomic, assign) CGFloat centerY;
 
 -(BOOL) containsSubView:(UIView *)subView;
+
 - (UIViewController*)viewController;
+///重新方法标记lastView
+///    [ UIView overrideMethod:@selector(mas_makeConstraints:) withMethod:@selector(mas_makeConstraints_lastView)];
+
+- (NSArray *)mas_makeConstraints_lastView:(void(^)(MASConstraintMaker *))block;
+
 @end

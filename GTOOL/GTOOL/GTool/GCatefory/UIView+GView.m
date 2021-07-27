@@ -118,5 +118,12 @@
     }
     return nil;
 }
-
+- (NSArray *)mas_makeConstraints_lastView:(void(^)(MASConstraintMaker *))block {
+    self.translatesAutoresizingMaskIntoConstraints = NO;
+    MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithView:self];
+    block(constraintMaker);
+    [GSharedClass shared].masViewLast = self;
+    return [constraintMaker install];
+    
+}
 @end

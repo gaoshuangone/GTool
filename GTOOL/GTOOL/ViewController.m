@@ -8,6 +8,7 @@
 #import "ViewController.h"
 #import "SecondModel.h"
 #import "SecondViewController.h"
+#import "NSObject+swizzle.h"
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *testArchiveModel;
 @property (weak, nonatomic) IBOutlet UIButton *testSQLModel;
@@ -77,64 +78,48 @@
     [model1 g_dbDelwithORQueryID:@"11111"];
     //查询所有
     [SecondModel g_dbQueryAll];
-//        [GModelManger insertWithModel:model1];
-//        [GModelManger queryFromTableWithMarkClass:[SecondModel class]];
-//        [GModelManger delWithModel:nil withORID:@"11111"];
-        
-    //    [db insertWithModel:model1];
-    //
-    //
-    //
-    //    GModelManger* db = [GModelManger shared];
+}
+- (IBAction)manonry:(id)sender {
+    
+    [ UIView overrideMethod:@selector(mas_makeConstraints:) withMethod:@selector(mas_makeConstraints_lastView)];
 
-    //    SecondModel* model2 = [[SecondModel alloc]init];
-    //    model2.userID = @"2222";
-    //    model2.aaa = @"2222";
-    //
-    //    [db insertWithModel:model2];
-    //
-    //
-    //    SecondModel* model3 = [[SecondModel alloc]init];
-    //    model3.userID = @"33333";
-    //    model3.aaa = @"33333";
-    //
-    //    [db insertWithModel:model3];
-        
-        
-    //    SecondModel* model4 = [[SecondModel alloc]init];
-    //    model4.userID = @"33333";
-    //    model4.aaa = @"444444";
-    //    [db updateWithModel:model4];
-        
-        
-    //    [db delWithModel:model2 withORID:nil];
-        
-    //    [db queryFromTableWithMarkClass:[SecondModel class]];
-        
-        
-        
-        
-    //    ThreeModel* model2 = [[ThreeModel alloc]init];
-    //    model2.userIDSString = @"2222";
-    //    [model2 dbInsert ];
-    //
-    //    [model2 queryFromTable];
-    //    [model2 dbDel];
-    //    [model2 queryFromTable];
-    //    [model2 dbInsert ];
-    //    [model2 queryFromTable];
-    //    [ThreeModel dbDelwithID:@"2222"];
-    //    [model2 queryFromTable];
+    UILabel* label =  [UILabel g_Init:^(UILabel * _Nonnull gs) {
+        gs.g_chain.backgroundColor(kOrangeColor);
+    } withSuperView:self.view withMasonry:^(MASConstraintMaker * _Nonnull make, UILabel * _Nonnull gs) {
+        make.left.top.offset(200);
+        make.size.mas_equalTo(CGSizeMake(50, 50));
+    }];
+    
+    
+    UILabel* label1 =  [UILabel g_copyView:label];
+    [self.view addSubview:label1];
 
-    //    [db insertWithModel:model2];
-    //
-    //
-    //    ThreeModel* model3 = [[ThreeModel alloc]init];
-    //    model3.userIDSString = @"33333";
-    //    model3.aaa = @"33333";
-    //
-    //    [db insertWithModel:model3];
-    //
-    //    [db queryFromTableWithMarkClass:[ThreeModel class]];
-    }
+    [label1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(kMasLastView().mas_right).offset(20);
+        make.top.equalTo(label);
+        make.size.mas_equalTo(CGSizeMake(50, 50));
+    }];
+    
+    //    NSData *tempArchive = [NSKeyedArchiver archivedDataWithRootObject:button];
+    //    UIButton* button2 =  [NSKeyedUnarchiver unarchiveObjectWithData:tempArchive];
+    //    [self.view addSubview:button2];
+    //    [button2 mas_remakeConstraints:^(MASConstraintMaker *make) {
+    //        make.size.mas_equalTo(CGSizeMake(100, 100));
+    //        make.left.top.offset(300);
+    //    }];
+    
+//    [UILabel g_Init:^(UILabel * _Nonnull gs) {
+//        gs.g_chain.backgroundColor(kOrangeColor);
+//    } withSuperView:self.view withMasonry:^(MASConstraintMaker * _Nonnull make, UILabel * _Nonnull gs) {
+//        make.left.equalTo(kMasLastView().mas_right).offset(20);
+//        make.top.equalTo(label);
+//
+//        make.size.mas_equalTo(CGSizeMake(50, 50));
+//    }];
+    
+    
+    
+  
+    
+}
 @end

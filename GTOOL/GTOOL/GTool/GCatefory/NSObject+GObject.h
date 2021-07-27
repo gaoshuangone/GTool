@@ -87,7 +87,7 @@ UIFont* kAdaptedFont(CGFloat);
 
 UIViewController* kGetCurrentVC(void);
 
-
+UIView* kMasLastView(void);
 
 /**
  多语言适配
@@ -138,5 +138,17 @@ predicate = 0l;\
 +(instancetype)shared;
 @end
 
+
+
+/// 第三方
+@interface GSharedClass:NSObject<GHelperProtocol>
+///保留masonry上一个试图
+@property (strong, nonatomic)UIView* masViewLast;
+/////GModel保存db，区分不同用户不同表
+//@property (strong, nonatomic)NSString* modelDBMarker;
+/////GModel保存归档，区分不同类型
+//@property (strong, nonatomic)NSString* modelArchiveMarker;
+
+@end
 
 NS_ASSUME_NONNULL_END

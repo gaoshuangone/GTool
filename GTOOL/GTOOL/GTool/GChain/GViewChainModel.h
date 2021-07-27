@@ -30,6 +30,10 @@ typedef void(^TapBlock)(void);
 -(void)g_addTapAction:(TapBlock)block;
 
 //复制一个view
--(UIView*)g_copyView:(UIView*)view;
++(__kindof UIView*)g_copyView:(UIView*)view;
+
 @end
+
+
+
 NS_ASSUME_NONNULL_END

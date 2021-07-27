@@ -188,9 +188,10 @@ G_CHAIN_BUTTON_IMPLEMENTATION(highlighted,setHighlighted,BOOL);
     if (masBlock) {
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             masBlock(make,button);
+            [GSharedClass shared].masViewLast = button;
         }];
     }
-    [button zj_addBtnActionHandler:^{
+    [button g_addBtnActionHandler:^{
         if (button.g_chain.isCanSoonClickChain) {
             button.userInteractionEnabled = NO;
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.2f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -215,14 +216,14 @@ G_CHAIN_BUTTON_IMPLEMENTATION(highlighted,setHighlighted,BOOL);
 //        objc_setAssociatedObject(self, isCanSoonClickConst, [NSNumber numberWithBool:isCanSoonClick], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 //}
 #pragma mark - 点击事件
--(void)zj_addBtnActionHandler:(ButtonTouchUpInsideBlock)touchHandler{
-    objc_setAssociatedObject(self, @selector(zj_addBtnActionHandler:), touchHandler, OBJC_ASSOCIATION_COPY_NONATOMIC);
+-(void)g_addBtnActionHandler:(ButtonTouchUpInsideBlock)touchHandler{
+    objc_setAssociatedObject(self, @selector(g_addBtnActionHandler:), touchHandler, OBJC_ASSOCIATION_COPY_NONATOMIC);
     [self removeTarget:self action:@selector(blockActionTouchUp:) forControlEvents:UIControlEventTouchUpInside];
     [self addTarget:self action:@selector(blockActionTouchUp:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 -(void)blockActionTouchUp:(UIButton *)sender{
-    ButtonTouchUpInsideBlock block = objc_getAssociatedObject(self, @selector(zj_addBtnActionHandler:));
+    ButtonTouchUpInsideBlock block = objc_getAssociatedObject(self, @selector(g_addBtnActionHandler:));
     if (block) {
         block();
     }

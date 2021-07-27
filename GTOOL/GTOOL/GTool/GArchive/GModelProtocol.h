@@ -19,11 +19,11 @@
 @protocol GDBModelProtocol <NSObject>
 
 @optional
-#pragma mark - 使用数据库储存需要设置
-/// 生成表名 需要跟用户对应起来
+#pragma mark - 使用数据库储存必须设置
+/// 生成表名
 +(NSString*)g_setDBTableNameMarker;
 ///根据表建立的模型
-+(Class)g_setDBClassModelMarker;
+//+(Class)g_setDBClassModelMarker;
 ///筛选需要记录的表中的属性，为nil表示全部记录
 +(NSArray<NSString*>*)g_setDBExcludedProperties;
 ///表中增删改查，需要的标示，表示要取GModel中一个属性来，多策略查询需要重新修改方法
@@ -52,6 +52,7 @@
 
 @optional
 #pragma mark - 使用归档储存需要设置
+///设置归档储存的标识符，默认为保存的model的class名字
 +(NSString*)g_setArchiveMarker;
 
 #pragma mark- 归档储存提供的方法

@@ -39,6 +39,16 @@
                         <action selector="sqlArchiveButton:" destination="-1" eventType="touchUpInside" id="mbI-NB-lAE"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zBS-uV-HZl">
+                    <rect key="frame" x="30" y="133" width="98" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" systemColor="systemRedColor"/>
+                    <state key="normal" title="Masonry"/>
+                    <connections>
+                        <action selector="archiveButton:" destination="-1" eventType="touchUpInside" id="ysR-53-3NG"/>
+                        <action selector="manonry:" destination="-1" eventType="touchUpInside" id="rJr-oM-Bpe"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
