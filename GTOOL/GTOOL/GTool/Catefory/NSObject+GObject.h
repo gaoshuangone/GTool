@@ -12,22 +12,7 @@
 
 
 NS_ASSUME_NONNULL_BEGIN
-typedef NS_ENUM(NSInteger,LanguageType){
-    //跟随系统语言，默认
-    kLanguageType_System,
-     //简体中文
-    kLanguageType_Chinese_Simplified,
-    //繁体中文
-    kLanguageType_Chinese_Traditional,
-    //英文
-    kLanguageType_English,
-    //印尼
-    kLanguageType_ID,
-    
-    //中文
-//    kGSLanguageType_Chinese,
-   
-};
+
 @interface NSObject (GObject)
 
 // 获得弱引用对象
@@ -40,21 +25,50 @@ typedef NS_ENUM(NSInteger,LanguageType){
 // 强引用对象。
 //#define kStrongObject(object) __strong __typedef(object) strongObject = object;
 #define kStrongSelf __strong __typedef(self) strongSelf = self;
+#define APIURL  (getUrl())
 
+
+
+
+#pragma mark - 通知
 /**  通知  */
-#define kNotiPost(nameStr,dic)  [[NSNotificationCenter defaultCenter] postNotificationName:nameStr object:nil userInfo:dic];
-#define kNotiObserver(nameStr,selString)  [[NSNotificationCenter defaultCenter]addObserver:self selector:(NSSelectorFromString(selString)) name:nameStr object:nil];
+#define kNotiPost(nameStr,dic)  ({\
+dispatch_async(dispatch_get_main_queue(), ^{\
+        @try {\
+            [[NSNotificationCenter defaultCenter] postNotificationName:name object:dict userInfo:nil];\
+        }\
+        @catch (NSException *exception) {}\
+        @finally {}\
+    });\
+})
+#define kNotiAddObserver(nameStr)  [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(notificationObserver:) name:nameStr object:nil];
 #define kNotiRemove(nameStr) [[NSNotificationCenter defaultCenter]removeObserver:self name:nameStr object:nil];
+#define kNotiRemoveAll(nameStr) [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-/**  高度计算  */
-#define kStatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height //状态栏高度
-#define kNavBarHeight 44.0 //导航栏高度
-#define kTopHeight (kStatusBarHeight + kNavBarHeight) //状态栏+导航栏 高度
+#pragma mark - 高度计算
+#define kHeightStatusBar [[UIApplication sharedApplication] statusBarFrame].size.height //状态栏高度
+#define kHeightNavBar 44.0 //导航栏高度
+#define kHeightTop (kHeightStatusBar + kHeightNavBar) //状态栏+导航栏 高度
+#define kHeightTabBar (kHeightStatusBar>20?49+kHeightTabBarXPlus:49)//tabBar高度
+#define kHeightTabBarXPlus (kISIphoneX()? 34:0)     //TabBar iPhoneX多余的高度
+#define kHeightAvailable (kMainScreenWide() -kHeightTop - kHeightTabBar)
 
-#define kTabBarXSurPlusHeigt  (kISIphoneX()? 34:0)     //TabBar iPhoneX多余的高度
-#define kTabBarHeight ([[UIApplication sharedApplication] statusBarFrame].size.height>20?49+kTabBarSurPlusHeigt:49)//tabBar高度
 
-#define kAvailableHeight (SCREEN_HEIGHT -kTopHeight - kTabBarHeight)
+
+
+#ifdef DEBUG
+#define NSLog(format, ...) do {      \
+fprintf(stderr, "<%s : %d> %s\n",                                           \
+[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String],  \
+__LINE__, __func__);                                                        \
+(NSLog)((format), ##__VA_ARGS__);                                           \
+fprintf(stderr, "-------------------------------------------------------\n"); \
+} while (0)
+#else
+#define NSLog(...)
+#endif
+
+
 
 
 /**  颜色  */
@@ -64,12 +78,16 @@ typedef NS_ENUM(NSInteger,LanguageType){
 #define kOrangeColor      [UIColor orangeColor]
 #define kYellowColor      [UIColor yellowColor]
 
+- (void)notificationObserve:(NSNotification *)notification;
+
 UIColor* kColorStringHex(NSString*);
 UIColor* kColorStringHexA(NSString*,float a);
 UIColor* kColorHex(long long int);
 UIColor* kColorRGB(NSInteger r,NSInteger g,NSInteger b);
 UIColor* kColorRGBA(NSInteger r,NSInteger g,NSInteger b,float a);
-
+/**
+ 高度计算
+ */
 UIImage* kImageName(NSString*);
 UIImage* kImageFile(NSString*);
 NSURL* kUrl(NSString* str);
@@ -105,28 +123,7 @@ id kUserDefaultGet(NSString*key);
 
 UIView* kMasLastView(void);
 
-/**
- 多语言适配
- */
-/// 获取当前App内设置的语言
-+ (LanguageType )g_getCurrentLanguageType;
-/// 获取当前系统设置的语音
-+(LanguageType)g_getString_localTyp;
-/// 是否是中文
-+(BOOL)g_isChineseLanguage;
 
-/// 设置app语言模式并返回 .lproj 对应路径 ，可以不接受返回值
-/// @param type type description
-+ (NSString *)g_setCurrentLanguage:(LanguageType)type;
-
-///// 初始化App当前语言 获取app设置的 .lproj 对应路径bundle ，在许可范围内用默认系统语言代替
-+(NSBundle*)g_getCurrentLanguageBundle;
-
-///// 初始化App当前语言/// 获取app设置的 .lproj名字  ，在许可范围内设置用系统语言代替，自定义bundle中使用
-//+ (NSString *)g_getCurrentLanguageLprojWith;
-
-///// 初始化App当前语言/// 获取app设置的 .lproj名字  ，在许可范围内设置用系统语言代替，自定义bundle中使用
-+ (NSString *)g_getCurrentLanguageBundleWithName:(NSString*)name withType:(NSString*)type;
 @end
 
 

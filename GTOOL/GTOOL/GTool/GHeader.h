@@ -9,17 +9,37 @@
 #ifndef Header_h
 #define Header_h
 
-//pod 'SVProgressHUD', '~> 2.2.5'
-//pod 'FMDB','2.7.5'
+
+
+/**
+ Extension
+ */
+//#import "GLanguage.h"
+
+/**
+ Catefory
+ */
 #import "NSObject+GObject.h"
+
+#import "NSDate+GDate.h"
+#import "UIAlertController+GAlert.h"
+#import "UIView+GView.h"
+#import "UIViewController+GSSkip.h"
+
+/**
+ Chain
+ */
 #import "GButtonChainModel.h"
 #import "GLabelChainModel.h"
 #import "GViewChainModel.h"
 #import "GUIImageViewChainModel.h"
-#import "GCD.h"
-#import "NSDate+GDate.h"
-#import "UIAlertController+GAlert.h"
-#import "GModelManger.h"
-#import "UIView+GView.h"
-#import "UIViewController+GSSkip.h"
 #endif /* Header_h */
+
+/**
+ Chain
+ */
+#import "GCD.h"
+
+
+//pod 'SVProgressHUD', '~> 2.2.5'
+//pod 'FMDB','2.7.5'

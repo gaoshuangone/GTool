@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @interface UIView (GView)
 @property (nonatomic) CGPoint frameOrigin;
 @property (nonatomic) CGSize frameSize;
@@ -34,7 +33,7 @@
 ///重新方法标记lastView
 ///    [ UIView overrideMethod:@selector(mas_makeConstraints:) withMethod:@selector(mas_makeConstraints_lastView)];
 
-- (NSArray *)mas_makeConstraints_lastView:(void(^)(MASConstraintMaker *))block;
+- (NSArray *)mas_makeConstraints_lastView:(id)block;
 /**
  *  设置部分圆角(绝对布局)
  *

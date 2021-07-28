@@ -8,7 +8,7 @@
 #ifndef GModelProtocol_h
 #define GModelProtocol_h
 
-
+@class GModel;
 @protocol GModelProtocol <NSObject>
 @optional
 ///父类赋值到子类，数据会被覆盖
