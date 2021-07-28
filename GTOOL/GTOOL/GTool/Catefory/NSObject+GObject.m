@@ -241,7 +241,7 @@ void kHidLoading(void){
 void kShowToast(NSString* str){
     kHidLoading();
     [SVProgressHUD showImage:[UIImage imageNamed:@""] status:str];
-    [SVProgressHUD dismissWithDelay:1.2f];
+//    [SVProgressHUD dismissWithDelay:1.2f];
 
 }
 void kShowLoadingWithText(NSString* str){

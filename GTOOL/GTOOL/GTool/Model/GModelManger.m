@@ -142,15 +142,15 @@ GHELPER_FREE();
 {
     [GModelManger shared].dbModelClass = [model class];
     [[GModelManger shared].dbModelClass g_setDBQueryMarker];
-    kWeakSelf
+    kSelfWeak
     [[GModelManger shared].dbShard inTransaction:^(BOOL *rollback) {
         
         YIIParameters* par = [[YIIParameters alloc]init];
         if (strID && strID.length !=0) {
-            [weakSelf setYIIParameters:par withValue:strID];
+            [selfWeak setYIIParameters:par withValue:strID];
 
         }else if (!kISEmpty([model valueForKey:[[GModelManger shared].dbModelClass g_setDBQueryMarker]])) {
-            [weakSelf setYIIParameters:par withModel:model];
+            [selfWeak setYIIParameters:par withModel:model];
 
         }else{
             NSAssert(0, @"chekcQueryDBWeherMark");

@@ -15,17 +15,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSObject (GObject)
 
-// 获得弱引用对象
-//#define kWeakObject(object) __weak __typeof(object) weakObject = object;
 
-// 弱引用的对象。
-//#define kWeak(caller, object) __weak __typeof(object) caller = object;
-#define kWeakSelf __weak __typeof(self) weakSelf = self;
 
-// 强引用对象。
-//#define kStrongObject(object) __strong __typedef(object) strongObject = object;
-#define kStrongSelf __strong __typedef(self) strongSelf = self;
-#define APIURL  (getUrl())
+// 强弱引用的self
+#define kSelfWeak  __weak __typeof(self) selfWeak = self;
+#define kSelfStrong __strong __typeof(selfWeak) selfStrong = selfWeak;
+// 强弱引用的self对象。
+#define kWeakObject(object) __weak __typedef(object) weakObject = object;
+#define kStrongObject(object) __strong __typedef(weakObject) strongObject = weakObject;
+
 
 
 
