@@ -9,6 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
 @interface SecondModel : GModel
 @property(strong, nonatomic)NSString* aaa;
 @property(strong, nonatomic)NSString* userID;
