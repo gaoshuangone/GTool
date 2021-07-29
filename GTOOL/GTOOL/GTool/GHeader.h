@@ -25,6 +25,7 @@
 #import "UIAlertController+GAlert.h"
 #import "UIView+GView.h"
 #import "UIViewController+GSSkip.h"
+#import "UITextView+GTextView.h"
 
 /**
  Chain
