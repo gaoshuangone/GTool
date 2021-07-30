@@ -16,19 +16,21 @@
  */
 //#import "GLanguage.h"
 
-/**
- Catefory
+/*
+ ************************************************************************************
+ * Catefory文件
+ ************************************************************************************
  */
 #import "NSObject+GObject.h"
-
 #import "NSDate+GDate.h"
 #import "UIAlertController+GAlert.h"
 #import "UIView+GView.h"
 #import "UIViewController+GSSkip.h"
 #import "UITextView+GTextView.h"
-
-/**
- Chain
+/*
+ ************************************************************************************
+ * Chain类
+ ************************************************************************************
  */
 #import "GButtonChainModel.h"
 #import "GLabelChainModel.h"
@@ -36,8 +38,10 @@
 #import "GUIImageViewChainModel.h"
 #endif /* Header_h */
 
-/**
- Chain
+/*
+ ************************************************************************************
+ * 第三方类
+ ************************************************************************************
  */
 #import "GCD.h"
 

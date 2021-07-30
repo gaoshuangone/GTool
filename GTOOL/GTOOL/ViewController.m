@@ -8,6 +8,7 @@
 #import "ViewController.h"
 #import "SecondModel.h"
 #import "NSObject+swizzle.h"
+#import "LLDebugTool.h"
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *testArchiveModel;
 @property (weak, nonatomic) IBOutlet UIButton *testSQLModel;
@@ -17,11 +18,12 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
+    self.view.backgroundColor = [UIColor whiteColor];
+
     [super viewDidLoad];
 //
     // Do any additional setup after loading the view.
 }
-
 
 - (IBAction)archiveButton:(id)sender {
     SecondModel* model =  [SecondModel g_archiveWithBlock:^(__kindof GModel *modelSub) {
@@ -86,10 +88,6 @@
         make.centerX.equalTo(kMasLastView());
         make.size.mas_equalTo(CGSizeMake(200, 200));
     }];
-    
-    
-    
-  
     
 }
 @end

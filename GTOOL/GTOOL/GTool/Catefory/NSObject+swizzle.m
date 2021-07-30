@@ -35,7 +35,7 @@
     return [c overrideMethod:origSel withMethod:altSel];
 }
 
-+ (BOOL)exchangeMethod:(SEL)origSel withMethod:(SEL)altSel
++ (BOOL)swizzingMethod:(SEL)origSel withMethod:(SEL)altSel
 {
     Method origMethod =class_getInstanceMethod(self, origSel);
     if (!origMethod) {
@@ -54,10 +54,10 @@
     return YES;
 }
 
-+ (BOOL)exchangeClassMethod:(SEL)origSel withClassMethod:(SEL)altSel
++ (BOOL)swizzingClassMethod:(SEL)origSel withClassMethod:(SEL)altSel
 {
     Class c = object_getClass((id)self);
-    return [c exchangeMethod:origSel withMethod:altSel];
+    return [c swizzingMethod:origSel withMethod:altSel];
 }
 
 @end

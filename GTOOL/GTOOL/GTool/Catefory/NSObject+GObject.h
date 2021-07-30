@@ -66,7 +66,14 @@ fprintf(stderr, "-------------------------------------------------------\n"); \
 #define NSLog(...)
 #endif
 
-
+// 忽略警告
+#define kIgnoreWarning(code) \
+do { \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
+code; \
+_Pragma("clang diagnostic pop") \
+} while (0)
 
 
 /**  颜色  */
