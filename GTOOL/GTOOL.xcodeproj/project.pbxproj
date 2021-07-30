@@ -1003,6 +1003,8 @@
 		3B089A7126B159C300ED24DB /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				3B08A7A026B41B2100ED24DB /* AvoidCrash */,
+				3B08A48626B409BD00ED24DB /* LLDebugTool */,
 				3B089A7226B159C300ED24DB /* YIIFMDB */,
 				3B089A7726B159C300ED24DB /* Masonry */,
 				3B089A9126B159C300ED24DB /* SVProgressHUD */,
@@ -1121,15 +1123,6 @@
 				3B089AB426B159C300ED24DB /* FMResultSet.m */,
 			);
 			path = fmdb;
-			sourceTree = "<group>";
-		};
-		3B089C4C26B3F05200ED24DB /* shenhe */ = {
-			isa = PBXGroup;
-			children = (
-				3B08A7A026B41B2100ED24DB /* AvoidCrash */,
-				3B08A48626B409BD00ED24DB /* LLDebugTool */,
-			);
-			path = shenhe;
 			sourceTree = "<group>";
 		};
 		3B08A48626B409BD00ED24DB /* LLDebugTool */ = {
@@ -2546,7 +2539,6 @@
 				D36E904725946A7D00DFA4AF /* SecondModel.h */,
 				D36E904825946A7D00DFA4AF /* SecondModel.m */,
 				D35D93172588C793004A0D42 /* main.m */,
-				3B089C4C26B3F05200ED24DB /* shenhe */,
 				D35B2077264FB2D50037A832 /* PrefixHeader.pch */,
 				D35D93162588C793004A0D42 /* Info.plist */,
 				D35D93112588C793004A0D42 /* Assets.xcassets */,
