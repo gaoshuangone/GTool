@@ -136,11 +136,7 @@
     return nil;
 }
 
-- (NSArray *)mas_makeConstraints_lastView:(id)block {
-    id maker =    [self mas_makeConstraints_lastView:block];
-    [GSharedClass shared].masViewLast = self;
-    return maker;
-}
+
 
 
 - (void)addRoundedCorners:(UIRectCorner)corners

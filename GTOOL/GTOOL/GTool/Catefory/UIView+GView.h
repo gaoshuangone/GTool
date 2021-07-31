@@ -30,9 +30,6 @@
 -(BOOL) containsSubView:(UIView *)subView;
 
 - (UIViewController*)viewController;
-///重新方法标记lastView
-///    [ UIView overrideMethod:@selector(mas_makeConstraints:) withMethod:@selector(mas_makeConstraints_lastView)];
-- (NSArray *)mas_makeConstraints_lastView:(id)block;
 /**
  *  设置部分圆角(绝对布局)
  *

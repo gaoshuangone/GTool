@@ -22,7 +22,12 @@ G_CHAIN_LABEL_IMPLEMENTATION(textAlignment, setTextAlignment, NSTextAlignment);
 G_CHAIN_LABEL_IMPLEMENTATION(numberOfLines, setNumberOfLines, NSInteger);
 G_CHAIN_LABEL_IMPLEMENTATION(lineBreakMode, setLineBreakMode, NSLineBreakMode);
 G_CHAIN_LABEL_IMPLEMENTATION(adjustsFontSizeToFitWidth, setAdjustsFontSizeToFitWidth, BOOL);
-
+-(GLabelChainModel * _Nonnull (^)(NSString * _Nonnull))textLanguage{
+    __weak typeof(self) weakSelf = self;
+       return ^(NSString *text){
+           return weakSelf.text(kLanguage(text));
+       };
+}
 @end
 
 

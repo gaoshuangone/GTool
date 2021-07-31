@@ -938,12 +938,12 @@
 				3B089A4726B159C200ED24DB /* NSObject+swizzle.m */,
 				3B089A4B26B159C200ED24DB /* UIAlertController+GAlert.h */,
 				3B089A5226B159C200ED24DB /* UIAlertController+GAlert.m */,
+				3B089C4526B2BF3800ED24DB /* UITextView+GTextView.h */,
+				3B089C4626B2BF3800ED24DB /* UITextView+GTextView.m */,
 				3B089A4A26B159C200ED24DB /* UIView+GView.h */,
 				3B089A5326B159C200ED24DB /* UIView+GView.m */,
 				3B089A5026B159C200ED24DB /* UIViewController+GSSkip.h */,
 				3B089A4826B159C200ED24DB /* UIViewController+GSSkip.m */,
-				3B089C4526B2BF3800ED24DB /* UITextView+GTextView.h */,
-				3B089C4626B2BF3800ED24DB /* UITextView+GTextView.m */,
 			);
 			path = Catefory;
 			sourceTree = "<group>";

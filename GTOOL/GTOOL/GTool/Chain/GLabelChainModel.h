@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface GLabelChainModel : GBaseChainModel<GLabelChainModel *>
 
 G_CHAIN_PROPERTY GLabelChainModel *(^ text)(NSString *text);
+//G_CHAIN_PROPERTY GLabelChainModel *(^ textLanguage)(NSString *textLanguage);
 G_CHAIN_PROPERTY GLabelChainModel *(^ font)(UIFont *font);
 G_CHAIN_PROPERTY GLabelChainModel *(^ textColor)(UIColor *textColor);
 G_CHAIN_PROPERTY GLabelChainModel *(^ attributedText)(NSAttributedString *attributedText);

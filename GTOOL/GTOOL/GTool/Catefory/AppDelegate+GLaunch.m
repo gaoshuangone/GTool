@@ -40,11 +40,27 @@
 #endif
 
 
-@interface ExchangeModel : NSObject
+@interface UIView (ExchangeView)
+- (NSArray *)mas_makeConstraints_lastView:(id)block;
+
+@end
+@implementation UIView (ExchangeView)
+- (NSArray *)mas_makeConstraints_lastView:(id)block {
+    id maker =    [self mas_makeConstraints_lastView:block];
+    [GSharedClass shared].masViewLast = self;
+    return maker;
+}
+@end
+
+
+
+
+
+@interface ExchangeObject : NSObject
 
 +(void)swizzingLaunchMothod;
 @end
-@implementation ExchangeModel
+@implementation ExchangeObject
 
 +(void)swizzingLaunchMothod{
     
@@ -108,7 +124,7 @@
 
 - (BOOL)applicationExchangeMethod:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     [self applicationExchangeMethod:application didFinishLaunchingWithOptions:launchOptions];
-    [ExchangeModel swizzingLaunchMothod];
+    [ExchangeObject swizzingLaunchMothod];
     return  YES;
 }
 
@@ -137,7 +153,7 @@
     [[SceneDelegate class] swizzingMethod:@selector(scene:willConnectToSession:options:) withMethod:@selector(sceneExchangeMethod:willConnectToSession:options:)];
 #endif
     
-    
+   
     [UIView  swizzingMethod:@selector(mas_makeConstraints:) withMethod:@selector(mas_makeConstraints_lastView:)];
 
     [self swizzingMethod:@selector(application:didFinishLaunchingWithOptions:) withMethod:@selector(applicationExchangeMethod:didFinishLaunchingWithOptions:)];
@@ -164,7 +180,7 @@
     dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
     dispatch_source_set_timer(timer, DISPATCH_TIME_NOW, 0 * NSEC_PER_SEC, 1 * NSEC_PER_SEC);
     dispatch_source_set_event_handler(timer, ^{
-        [ExchangeModel swizzingLaunchMothod];
+        [ExchangeObject swizzingLaunchMothod];
     });
     dispatch_resume(timer);
     

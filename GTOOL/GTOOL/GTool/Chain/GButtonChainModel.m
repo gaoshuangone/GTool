@@ -33,6 +33,12 @@ if ([self.view.class instancesRespondToSelector:@selector(viewMethod:forState:)]
 @end
 @implementation GButtonChainModel
 
+-(GButtonChainModel * _Nullable (^)(NSString * _Nonnull, UIControlState))titleLanguage{
+    __weak typeof(self) weakSelf = self;
+    return ^(NSString *title, UIControlState state ){
+        return self.title(title, state);
+    };
+}
 //G_CHAIN_BUTTON_IMPLEMENTATION(title, title, setTitle, NSString *, UIControlState);
 - (GButtonChainModel * _Nullable (^)(NSString * _Nonnull, UIControlState))title{
     __weak typeof(self) weakSelf = self;

@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface GButtonChainModel : GBaseChainModel<GButtonChainModel *>
 
 G_CHAIN_PROPERTY GButtonChainModel *_Nullable(^title)(NSString *title , UIControlState state);
+//G_CHAIN_PROPERTY GButtonChainModel *_Nullable(^titleLanguage)(NSString *title , UIControlState state);
 G_CHAIN_PROPERTY GButtonChainModel *_Nullable(^titleColor)(UIColor *titleColor , UIControlState state);
 G_CHAIN_PROPERTY GButtonChainModel *_Nullable(^titleFont)(UIFont *titleFont);
 G_CHAIN_PROPERTY GButtonChainModel *_Nullable(^attributedTitle)(NSAttributedString *attributedTitle , UIControlState state);
