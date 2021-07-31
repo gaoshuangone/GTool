@@ -30,7 +30,7 @@ typedef NS_ENUM(NSUInteger, YIIFMDBMathType) {
 
 @class YIIFMDB;
 
-typedef void(^YIICompletionBlock)(YIIFMDB *db, NSDictionary *unrecognizedProperties);
+typedef void(^YIICompletionBlock)(YIIFMDB * _Nullable db, NSDictionary * _Nullable unrecognizedProperties);
 
 @interface YIIFMDB : NSObject
 
@@ -42,25 +42,25 @@ typedef void(^YIICompletionBlock)(YIIFMDB *db, NSDictionary *unrecognizedPropert
     dataBasePath 数据库的文件夹路径，如果dataBasePath == nil,那么默认就是NSDocumentDirectory()
  *  @return 返回当前的单例对象
  */
-+ (instancetype)shareDatabase;
-+ (instancetype)shareDatabaseForName:(NSString * _Nullable)dataBaseName path:(NSString * _Nullable)dataBasePath;
++ (instancetype _Nullable )shareDatabase;
++ (instancetype _Nullable )shareDatabaseForName:(NSString * _Nullable)dataBaseName path:(NSString * _Nullable)dataBasePath;
 
 #pragma mark - 数据库相关属性
 
 /**
  *  当前的数据库
  */
-@property (nonatomic, readonly, copy)   FMDatabase *currentDatabase;
+@property (nonatomic, readonly, copy)   FMDatabase * _Nullable currentDatabase;
 
 /**
  *  当前的数据库所在路径
  */
-@property (nonatomic, readonly, copy)   NSString *currentDatabasePath;
+@property (nonatomic, readonly, copy)   NSString * _Nullable currentDatabasePath;
 
 /**
  *  获取到数据库中的主键的key，返回"yii_pkID",在配置YIIParameters时可能会用到
  */
-@property (nonatomic, readonly, copy)   NSString *primaryKey;
+@property (nonatomic, readonly, copy)   NSString * _Nullable primaryKey;
 
 #pragma mark - 是否打印log
 /**
@@ -96,7 +96,7 @@ typedef void(^YIICompletionBlock)(YIIFMDB *db, NSDictionary *unrecognizedPropert
  *  @param tableName
  *  在连续插入多条数据的时候，很有可能会出现插入不成功的情况，如果想要联调，请将shouldOpenDebugLog设为YES
  */
-- (void)insertWithModels:(NSArray *)models tableName:(NSString * _Nonnull)tableName;
+- (void)insertWithModels:(NSArray *_Nullable)models tableName:(NSString * _Nonnull)tableName;
 
 #pragma mark - 删除数据
 
@@ -107,7 +107,7 @@ typedef void(^YIICompletionBlock)(YIIFMDB *db, NSDictionary *unrecognizedPropert
  *  如果parameters = nil，或者parameters仅仅是一个实例对象，而没有执行YIIParameters的方法进行参数配置，那么parameters.whereParameters就会不存在默认删除数据
  *  @return 是否删除成功
  */
-- (BOOL)deleteFromTable:(NSString * _Nonnull)tableName whereParameters:(YIIParameters *)parameters;
+- (BOOL)deleteFromTable:(NSString * _Nonnull)tableName whereParameters:(YIIParameters *_Nullable)parameters;
 
 /**
  *  删除所有数据
@@ -124,7 +124,7 @@ typedef void(^YIICompletionBlock)(YIIFMDB *db, NSDictionary *unrecognizedPropert
  *  @param dictionary   要更新的key-value.在我经验来看，更改数据只是更新部分数据，而不是全部，所以这里使用的是字典，而不是传入的model,而且这样还会增加效率
  *  @param parameters   参数，YIIParameters决定了sql语句"where"后面的参数。具体用法参考YIIParameters类
  */
-- (BOOL)updateTable:(NSString * _Nonnull)tableName dictionary:(NSDictionary * _Nonnull)dictionary whereParameters:(YIIParameters *)parameters;
+- (BOOL)updateTable:(NSString * _Nonnull)tableName dictionary:(NSDictionary * _Nonnull)dictionary whereParameters:(YIIParameters *_Nullable)parameters;
 
 #pragma mark - 查询数据
 
@@ -138,7 +138,7 @@ typedef void(^YIICompletionBlock)(YIIFMDB *db, NSDictionary *unrecognizedPropert
 
 //    YIIParameters *parameters = [[YIIParameters alloc] init];
 //    [parameters andWhere:db.primaryKey value:@"5" relationType:YIIParametersRelationTypeLessThan];
-- (NSArray *)queryFromTable:(NSString * _Nonnull)tableName model:(Class _Nonnull)modelClass whereParameters:(YIIParameters *)parameters;
+- (NSArray *_Nullable)queryFromTable:(NSString * _Nonnull)tableName model:(Class _Nonnull)modelClass whereParameters:(YIIParameters *_Nullable)parameters;
 
 #pragma mark - 除去增删改查之外常用的功能
 
@@ -180,7 +180,7 @@ typedef void(^YIICompletionBlock)(YIIFMDB *db, NSDictionary *unrecognizedPropert
  *  @param tableName    表的名字
  *  @return             所有字段名
  */
-- (NSArray<NSString *> *)getAllColumnsFromTable:(NSString * _Nonnull)tableName;
+- (NSArray<NSString *> *_Nullable)getAllColumnsFromTable:(NSString * _Nonnull)tableName;
 
 /**
  *  获取表中有多少条数据
@@ -207,12 +207,12 @@ typedef void(^YIICompletionBlock)(YIIFMDB *db, NSDictionary *unrecognizedPropert
  *  线程队列的使用
  *  @param block    block，将数据库操作放到block里执行可以保证线程安全
  */
-- (void)inDatabase:(dispatch_block_t)block;
+- (void)inDatabase:(dispatch_block_t _Nullable )block;
 
 /**
  *  事务的使用
  *  @param block    block，将数据库操作放到block里执行可以保证线程安全
  */
-- (void)inTransaction:(void(^)(BOOL *rollback))block;
+- (void)inTransaction:(void(^_Nonnull)(BOOL * _Nonnull  rollback))block;
 
 @end

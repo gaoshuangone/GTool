@@ -58,9 +58,10 @@
     //查询所有
     [SecondModel g_dbQueryAll];
 }
+
 - (IBAction)manonry:(id)sender {
     
-    [UIView overrideMethod:@selector(mas_makeConstraints:) withMethod:@selector(mas_makeConstraints_lastView)];
+//    [UIView overrideMethod:@selector(mas_makeConstraints:) withMethod:@selector(mas_makeConstraints_lastView:)];
 
     UILabel* label =  [UILabel g_Init:^(UILabel * _Nonnull gs) {
         gs.g_chain.backgroundColor(kOrangeColor);

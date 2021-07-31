@@ -8,6 +8,7 @@
 
 #import "AppDelegate+GLaunce.h"
 #import "NSObject+swizzle.h"
+#import "UIView+GView.h"
 #if __has_include("SceneDelegate.h")
 #import "SceneDelegate.h"
 #endif
@@ -37,6 +38,8 @@
 #if __has_include("SVProgressHUD.h")
 #import "SVProgressHUD.h"
 #endif
+
+
 @interface ExchangeModel : NSObject
 
 +(void)swizzingLaunchMothod;
@@ -116,11 +119,10 @@
     NSLog(@"******************* 空指针异常 %@", note.userInfo);
     NSDictionary *dict = note.userInfo;
     if(dict) {
+#if __has_include(<Bugly.h>) || __has_include("Bugly.h")
         NSString *name = [NSString stringWithFormat:@"空指针异常:%@", dict[@"errorPlace"]];
         NSString *reason = dict[@"errorReason"];
         NSException *ex = [[NSException alloc] initWithName:name reason:reason userInfo:dict];
-        
-#if __has_include(<Bugly.h>) || __has_include("Bugly.h")
         [Bugly reportException:ex];
 #endif
         
@@ -136,8 +138,11 @@
 #endif
     
     
+    [UIView  swizzingMethod:@selector(mas_makeConstraints:) withMethod:@selector(mas_makeConstraints_lastView:)];
+
     [self swizzingMethod:@selector(application:didFinishLaunchingWithOptions:) withMethod:@selector(applicationExchangeMethod:didFinishLaunchingWithOptions:)];
 }
+
 @end
 
 

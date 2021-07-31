@@ -55,7 +55,6 @@ G_CHAIN_LABEL_IMPLEMENTATION(adjustsFontSizeToFitWidth, setAdjustsFontSizeToFitW
     if (masBlock) {
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             masBlock(make,button);
-            [GSharedClass shared].masViewLast = button;
         }];
     }
     return button;

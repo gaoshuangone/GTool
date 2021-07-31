@@ -188,7 +188,6 @@ G_CHAIN_BUTTON_IMPLEMENTATION(highlighted,setHighlighted,BOOL);
     if (masBlock) {
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             masBlock(make,button);
-            [GSharedClass shared].masViewLast = button;
         }];
     }
     [button g_addBtnActionHandler:^{

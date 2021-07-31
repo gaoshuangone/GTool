@@ -67,6 +67,6 @@ typedef NS_ENUM(NSUInteger, YIIParametersOrderType) {
  *  值得一提的是，如果设置了这个参数，那么在属性whereParameters上面的方法都无效
  *  如果不设置这个参数，那么调用此属性的get方法则会获取到以上的方法所形成的sql语句
  */
-@property (nonatomic, copy)   NSString *whereParameters;
+@property (nonatomic, copy)   NSString * _Nullable whereParameters;
 
 @end

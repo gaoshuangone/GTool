@@ -135,14 +135,13 @@
     }
     return nil;
 }
-- (NSArray *)mas_makeConstraints_lastView:(void(^)(MASConstraintMaker *))block {
-    self.translatesAutoresizingMaskIntoConstraints = NO;
-    MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithView:self];
-    block(constraintMaker);
+
+- (NSArray *)mas_makeConstraints_lastView:(id)block {
+    id maker =    [self mas_makeConstraints_lastView:block];
     [GSharedClass shared].masViewLast = self;
-    return [constraintMaker install];
-    
+    return maker;
 }
+
 
 - (void)addRoundedCorners:(UIRectCorner)corners
                 withRadii:(CGSize)radii {
