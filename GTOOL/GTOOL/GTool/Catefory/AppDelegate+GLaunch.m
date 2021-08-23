@@ -100,7 +100,7 @@
 #endif
     
     
-#if  __has_include("LLDebugTool.h") && DEBUG
+#if  __has_include("LLDebugTool.h") 
     [[LLDebugTool sharedTool] startWorkingWithConfigBlock:^(LLConfig * _Nonnull config) {
         
         config.colorStyle = LLConfigColorStyleSimple;
@@ -113,6 +113,24 @@
 #endif
 }
 
+#if __has_include("AvoidCrash.h")
+// 异常错误处理
++ (void)dealwithCrashMessage:(NSNotification *)note {
+    //注意:所有的信息都在userInfo中
+    NSLog(@"******************* 空指针异常 %@", note.userInfo);
+    NSAssert(0, @"");
+    NSDictionary *dict = note.userInfo;
+    if(dict) {
+#if __has_include(<Bugly.h>) || __has_include("Bugly.h")
+        NSString *name = [NSString stringWithFormat:@"空指针异常:%@", dict[@"errorPlace"]];
+        NSString *reason = dict[@"errorReason"];
+        NSException *ex = [[NSException alloc] initWithName:name reason:reason userInfo:dict];
+        [Bugly reportException:ex];
+#endif
+        
+    }
+}
+#endif
 @end
 
 
@@ -128,25 +146,7 @@
     return  YES;
 }
 
-#if __has_include("AvoidCrash.h")
-// 异常错误处理
-- (void)dealwithCrashMessage:(NSNotification *)note {
-    //注意:所有的信息都在userInfo中
-    NSLog(@"******************* 空指针异常 %@", note.userInfo);
-    NSDictionary *dict = note.userInfo;
-    if(dict) {
-#if __has_include(<Bugly.h>) || __has_include("Bugly.h")
-        NSString *name = [NSString stringWithFormat:@"空指针异常:%@", dict[@"errorPlace"]];
-        NSString *reason = dict[@"errorReason"];
-        NSException *ex = [[NSException alloc] initWithName:name reason:reason userInfo:dict];
-        [Bugly reportException:ex];
-#endif
-        
-    }
-}
-#else
 
-#endif
 + (void)load {
     //SceneDelegate暂时用不到
 #if __has_include("SceneDelegate.h")

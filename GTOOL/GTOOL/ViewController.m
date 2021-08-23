@@ -9,6 +9,7 @@
 #import "SecondModel.h"
 #import "NSObject+swizzle.h"
 #import "LLDebugTool.h"
+
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *testArchiveModel;
 @property (weak, nonatomic) IBOutlet UIButton *testSQLModel;
@@ -18,9 +19,21 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
-    self.view.backgroundColor = [UIColor whiteColor];
-
     [super viewDidLoad];
+    
+    
+//    self.view.backgroundColor = [UIColor whiteColor];
+////
+//    id aaa = @"";
+//    NSLog(@"%@",[aaa stringValue]);
+////
+//    
+    NSMutableArray* array = @[].mutableCopy;
+    [array addObject:nil];
+//  
+//    
+//    [self performSelector:@selector(ssss)];
+    
 //
     // Do any additional setup after loading the view.
 }
