@@ -287,6 +287,11 @@
 		3B08A7C026B41B2100ED24DB /* NSAttributedString+AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08A7AD26B41B2100ED24DB /* NSAttributedString+AvoidCrash.m */; };
 		3B08A7C126B41B2100ED24DB /* AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08A7B026B41B2100ED24DB /* AvoidCrash.m */; };
 		3B08A7C226B41B2100ED24DB /* AvoidCrashStubProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B08A7B326B41B2100ED24DB /* AvoidCrashStubProxy.m */; };
+<<<<<<< Updated upstream
+=======
+		3B7CFA4726D3A2BA0076A2A4 /* NSObjectSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7CFA4626D3A2BA0076A2A4 /* NSObjectSafe.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3B864A7C270806F6003E2531 /* GGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B864A7A270806F6003E2531 /* GGridView.m */; };
+>>>>>>> Stashed changes
 		D35D93072588C78F004A0D42 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D35D93062588C78F004A0D42 /* AppDelegate.m */; };
 		D35D93102588C78F004A0D42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D35D930E2588C78F004A0D42 /* Main.storyboard */; };
 		D35D93122588C793004A0D42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D35D93112588C793004A0D42 /* Assets.xcassets */; };
@@ -886,6 +891,13 @@
 		3B08A7B526B41B2100ED24DB /* NSMutableString+AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+AvoidCrash.h"; sourceTree = "<group>"; };
 		3B08A7B626B41B2100ED24DB /* NSMutableAttributedString+AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+AvoidCrash.h"; sourceTree = "<group>"; };
 		3B08A7B726B41B2100ED24DB /* NSMutableArray+AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+AvoidCrash.h"; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
+=======
+		3B7CFA4526D3A2BA0076A2A4 /* NSObjectSafe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSObjectSafe.h; sourceTree = "<group>"; };
+		3B7CFA4626D3A2BA0076A2A4 /* NSObjectSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjectSafe.m; sourceTree = "<group>"; };
+		3B864A7A270806F6003E2531 /* GGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGridView.m; sourceTree = "<group>"; };
+		3B864A7B270806F6003E2531 /* GGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGridView.h; sourceTree = "<group>"; };
+>>>>>>> Stashed changes
 		D35B2077264FB2D50037A832 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		D35D93022588C78F004A0D42 /* GTOOL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTOOL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D35D93052588C78F004A0D42 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -951,6 +963,8 @@
 		3B089A5426B159C200ED24DB /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				3B864A7B270806F6003E2531 /* GGridView.h */,
+				3B864A7A270806F6003E2531 /* GGridView.m */,
 				3B089A5726B159C200ED24DB /* GLanguage.h */,
 				3B089A5526B159C200ED24DB /* GLanguage.m */,
 			);
@@ -2638,6 +2652,7 @@
 				3B08A7C026B41B2100ED24DB /* NSAttributedString+AvoidCrash.m in Sources */,
 				3B089ACF26B159C300ED24DB /* View+MASAdditions.m in Sources */,
 				3B08A6E326B409C000ED24DB /* LLEntryBallView.m in Sources */,
+				3B864A7C270806F6003E2531 /* GGridView.m in Sources */,
 				3B08A78B26B409C000ED24DB /* LLMagnifierView.m in Sources */,
 				3B08A73F26B409C000ED24DB /* LLHierarchyViewController.m in Sources */,
 				3B08A72126B409C000ED24DB /* LLRouter.m in Sources */,
