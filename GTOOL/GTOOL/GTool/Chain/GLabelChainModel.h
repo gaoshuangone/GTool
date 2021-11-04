@@ -72,3 +72,34 @@ NS_ASSUME_NONNULL_END
      make.right.mas_lessThanOrEqualTo(self.view.mas_right).offset(-10);  // 设置距离右边最小距离
  }];
  */
+
+/* YYText
+NSString* str = @"点击注册/登录表示同意用户协议";
+NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:str];
+text.yy_font = [UIFont systemFontOfSize:16];
+text.yy_color = [UIColor blueColor];
+[text yy_setUnderlineStyle:NSUnderlineStyleSingle range:[str rangeOfString:@"用户协议"]];
+[text yy_setTextHighlightRange:[str rangeOfString:@"用户协议"] color:[UIColor colorWithRed:0.093 green:0.492 blue:1.000 alpha:1.000] backgroundColor:[UIColor redColor] userInfo:nil tapAction:^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
+} longPressAction:^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
+}];
+YYLabel *label = [YYLabel new];
+label.attributedText = text;
+label.textAlignment = NSTextAlignmentCenter;
+label.textVerticalAlignment = YYTextVerticalAlignmentCenter;
+label.numberOfLines = 0;
+label.backgroundColor = kClearColor;
+label.displaysAsynchronously = YES;   //比较耗时的渲染操作在后台运行
+label.clearContentsBeforeAsynchronouslyDisplay = NO;  //在进行后台渲染前是否清除掉之前的内容，如果YES就会先清除之前的内容，可能会出现空白
+YYTextContainer  *titleContarer = [YYTextContainer new];
+titleContarer.size = CGSizeMake(SCREEN_WIDTH,CGFLOAT_MAX);
+label.textLayout = [YYTextLayout layoutWithContainer:titleContarer text:text];
+//    CGFloat titleLabelHeight = label.textLayout.textBoundingSize.height;
+// YYLabel要想自动换行，必须设置最大换行的宽度
+// label.preferredMaxLayoutWidth = SCREEN_WIDTH-40;
+[_viewLogin addSubview:label];
+[label mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.size.mas_equalTo(label.textLayout.textBoundingSize);
+    make.centerX.equalTo(_viewLogin);
+    make.bottom.equalTo(_viewLogin).offset(-20);
+}];
+ */
