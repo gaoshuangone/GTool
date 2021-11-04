@@ -36,3 +36,39 @@ G_CHAIN_PROPERTY GLabelChainModel *(^ adjustsFontSizeToFitWidth)(BOOL adjustsFon
 
 @end
 NS_ASSUME_NONNULL_END
+/*达到最大行时候折行
+ preferredMaxLayoutWidth
+ // 1
+ label.preferredMaxLayoutWidth = 100.f;//等价
+ // 2
+ [label mas_makeConstraints:^(MASConstraintMaker *make) {
+     make.width.lessThanOrEqualTo(@100);//等价
+ */
+
+/*抗压缩
+ [rightLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+     make.top.equalTo(self.view.mas_top).offset(100);
+     make.right.equalTo(self.view.mas_right).offset(-10);
+     make.width.mas_greaterThanOrEqualTo(100);   // 这是最小宽度
+ }];
+ [leftlbl mas_makeConstraints:^(MASConstraintMaker *make) {
+     make.left.equalTo(self.view.mas_left).offset(10);
+     make.top.equalTo(self.view.mas_top).offset(100);
+     make.right.equalTo(rightLbl.mas_left).offset(-10);
+     make.width.mas_greaterThanOrEqualTo(100);   // 这是最小宽度
+ }];
+ // 设置抗压缩优先级
+ 
+ //setContentHuggingPriority: 优先级越高，代表压缩越厉害，越晚被拉伸
+// setContentCompressionResistancePriority:： 优先级越高，代表拉伸越厉害，越晚被压缩
+ [leftlbl setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
+ [rightLbl setContentCompressionResistancePriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];
+ */
+/*极限约束
+ [orangeLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+     make.left.equalTo(self.view.mas_left).offset(10);
+     make.top.equalTo(self.view.mas_top).offset(200);
+     make.width.mas_greaterThanOrEqualTo(self.view.frame.size.width * 0.5 - 10); // 设置最小宽度
+     make.right.mas_lessThanOrEqualTo(self.view.mas_right).offset(-10);  // 设置距离右边最小距离
+ }];
+ */

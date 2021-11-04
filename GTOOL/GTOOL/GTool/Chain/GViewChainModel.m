@@ -111,6 +111,24 @@
     NSData *tempArchive = [NSKeyedArchiver archivedDataWithRootObject:view];
     return [NSKeyedUnarchiver unarchiveObjectWithData:tempArchive];
 }
++(UIView*)g_Init:(void (^)(UIView* gs))initBlock{
+    UIView* view = [[UIView alloc]init];
+    if (initBlock) {
+        initBlock(view);
+    }
+    return view;
+}
++(UIView*)g_Init:(void (^)(UIView* gs))initBlock withSuperView:(UIView*)superView withMasonry:(void (^)(MASConstraintMaker *make,UIView* gs))masBlock{
+    UIView* view = [UIView g_Init:initBlock];
+    [superView addSubview:view];
+    if (masBlock) {
+        [view mas_makeConstraints:^(MASConstraintMaker *make) {
+            masBlock(make,view);
+        }];
+    }
+//    view.showVisual();
+    return view;
+}
 @end
 
 

@@ -32,6 +32,9 @@ typedef void(^TapBlock)(void);
 //复制一个view
 +(__kindof UIView*)g_copyView:(UIView*)view;
 
++(UIView*)g_Init:(void (^)(UIView* gs))initBlock;
+
++(UIView*)g_Init:(void (^)(UIView* gs))initBlock withSuperView:(UIView*)superView withMasonry:(void (^)(MASConstraintMaker *make,UIView* gs))masBlock;
 @end
 
 
