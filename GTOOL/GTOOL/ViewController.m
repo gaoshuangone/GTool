@@ -10,9 +10,11 @@
 #import "NSObject+swizzle.h"
 #import "LLDebugTool.h"
 #import "HWProgressView.h"
+#import "ExampleHistTestVC.h"
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *testArchiveModel;
 @property (weak, nonatomic) IBOutlet UIButton *testSQLModel;
+@property (weak, nonatomic) IBOutlet UIButton *testHitTest;
 
 @end
 
@@ -28,13 +30,14 @@
 //    NSLog(@"%@",[aaa stringValue]);
 ////
 //    
-    NSMutableArray* array = @[].mutableCopy;
-    [array addObject:nil];
+//    NSMutableArray* array = @[].mutableCopy;
+//    [array addObject:nil];
 //  
 //    
 //    [self performSelector:@selector(ssss)];
     
-//
+    [self.getCurrentVC pushCanvas:@"ExampleHistTestVC"];
+
     // Do any additional setup after loading the view.
 }
 
@@ -117,5 +120,9 @@
       //背景边框颜色
       progressView.progerssStokeBackgroundColor=[UIColor clearColor];
       [self.view addSubview:progressView];
+}
+- (IBAction)ActionhitTest:(id)sender {
+    [self.getCurrentVC pushCanvas:@"ExampleHistTestVC"];
+    
 }
 @end

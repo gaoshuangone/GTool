@@ -843,7 +843,7 @@ void swizzleInstanceMethod(Class cls, SEL origSelector, SEL newSelector)
         if (anObject) {
             [self hookAddObject:anObject];
         } else {
-            SFAssert(NO, @"NSMutableArray invalid args hookAddObject:[%@]", anObject);
+          SFAssert(NO, @"NSMutableArray invalid args hookAddObject:[%@]", anObject);
         }
     }
 }

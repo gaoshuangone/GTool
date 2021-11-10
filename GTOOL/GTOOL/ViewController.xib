@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
             <connections>
                 <outlet property="testArchiveModel" destination="rg0-Wz-e0o" id="Ubn-8C-Hfx"/>
+                <outlet property="testHitTest" destination="pPN-ha-H6i" id="g9G-KR-uvM"/>
                 <outlet property="testSQLModel" destination="SOo-jV-kDC" id="bPu-49-z7z"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -40,13 +41,24 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zBS-uV-HZl">
-                    <rect key="frame" x="30" y="133" width="98" height="30"/>
+                    <rect key="frame" x="30" y="115" width="98" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" systemColor="systemRedColor"/>
                     <state key="normal" title="Masonry"/>
                     <connections>
                         <action selector="archiveButton:" destination="-1" eventType="touchUpInside" id="ysR-53-3NG"/>
                         <action selector="manonry:" destination="-1" eventType="touchUpInside" id="rJr-oM-Bpe"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pPN-ha-H6i">
+                    <rect key="frame" x="30" y="167" width="98" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" systemColor="systemRedColor"/>
+                    <state key="normal" title="hitTest"/>
+                    <connections>
+                        <action selector="ActionhitTest:" destination="-1" eventType="touchUpInside" id="TXu-2a-sr9"/>
+                        <action selector="archiveButton:" destination="-1" eventType="touchUpInside" id="Cro-la-1Bh"/>
+                        <action selector="manonry:" destination="-1" eventType="touchUpInside" id="NVh-81-f1m"/>
                     </connections>
                 </button>
             </subviews>
