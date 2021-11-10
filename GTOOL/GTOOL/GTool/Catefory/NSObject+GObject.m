@@ -263,7 +263,7 @@ UIView* kMasLastView(void){
     return [GSharedClass shared].masViewLast;
 }
 
-- (void)notificationObserve:(NSNotification *)notification{
+- (void)notificationObserver:(NSNotification *)notification{
     
 }
 

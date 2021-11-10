@@ -30,10 +30,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - 通知
 /**  通知  */
-#define kNotiPost(nameStr,dic)  ({\
+#define kNotiPost(nameStr,obj)  ({\
 dispatch_async(dispatch_get_main_queue(), ^{\
         @try {\
-            [[NSNotificationCenter defaultCenter] postNotificationName:name object:dict userInfo:nil];\
+            [[NSNotificationCenter defaultCenter] postNotificationName:nameStr object:obj userInfo:nil];\
         }\
         @catch (NSException *exception) {}\
         @finally {}\

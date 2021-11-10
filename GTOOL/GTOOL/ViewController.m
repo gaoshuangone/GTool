@@ -9,7 +9,7 @@
 #import "SecondModel.h"
 #import "NSObject+swizzle.h"
 #import "LLDebugTool.h"
-
+#import "HWProgressView.h"
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *testArchiveModel;
 @property (weak, nonatomic) IBOutlet UIButton *testSQLModel;
@@ -103,5 +103,19 @@
         make.size.mas_equalTo(CGSizeMake(200, 200));
     }];
     
+}
+
+-(void)progress{
+    //进度条
+      HWProgressView *progressView = [[HWProgressView alloc] initWithFrame:CGRectMake(24, 141, kMainScreenWide()-48, 6)];
+      //进度条边框宽度
+      progressView.progerStokeWidth=0.01f;
+      //进度条未加载背景
+      progressView.progerssBackgroundColor=kColorStringHex(@"E1F5F2") ;
+      //进度条已加载 颜色
+      progressView.progerssColor=kColorStringHex(@"08C2A9");
+      //背景边框颜色
+      progressView.progerssStokeBackgroundColor=[UIColor clearColor];
+      [self.view addSubview:progressView];
 }
 @end

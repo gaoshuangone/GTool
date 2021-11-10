@@ -36,14 +36,15 @@ G_CHAIN_PROPERTY GLabelChainModel *(^ adjustsFontSizeToFitWidth)(BOOL adjustsFon
 
 @end
 NS_ASSUME_NONNULL_END
-/*达到最大行时候折行
- preferredMaxLayoutWidth
- // 1
- label.preferredMaxLayoutWidth = 100.f;//等价
- // 2
- [label mas_makeConstraints:^(MASConstraintMaker *make) {
-     make.width.lessThanOrEqualTo(@100);//等价
- */
+/*约束最大宽度
+
+ // 1  preferredMaxLayoutWidth 需要配合numberOfLines=0使用
+ label.preferredMaxLayoutWidth = 100.f
+ label.numberOfLines=0
+ 
+ // 2 推荐使用
+     make.width.lessThanOrEqualTo(@100);//支持单行
+
 
 /*抗压缩
  [rightLbl mas_makeConstraints:^(MASConstraintMaker *make) {
