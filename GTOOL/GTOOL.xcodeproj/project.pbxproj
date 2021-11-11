@@ -2547,6 +2547,7 @@
 		3B3AB75D273B72CC008ACD1A /* ExampleHistTest */ = {
 			isa = PBXGroup;
 			children = (
+				3B3AB767273CC357008ACD1A /* 隐方动画 */,
 				3B3AB75A273B70C1008ACD1A /* ExampleHistTestVC.h */,
 				3B3AB75B273B70C1008ACD1A /* ExampleHistTestVC.m */,
 				3B3AB75E273B7308008ACD1A /* HistTestViewRed.h */,
@@ -2557,6 +2558,13 @@
 				3B3AB765273B732C008ACD1A /* HistTestViewYellow.m */,
 			);
 			path = ExampleHistTest;
+			sourceTree = "<group>";
+		};
+		3B3AB767273CC357008ACD1A /* 隐方动画 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "隐方动画";
 			sourceTree = "<group>";
 		};
 		3B73677E2709B59D00CC88B0 /* Test */ = {

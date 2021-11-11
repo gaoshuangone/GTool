@@ -7,6 +7,7 @@
 
 #import "HistTestViewRed.h"
 #import "HistTestViewOrange.h"
+#import "ExampleHistTestVC.h"
 @implementation HistTestViewRed
 -(UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
     
@@ -24,25 +25,32 @@
         
         if ([subview isKindOfClass:[UIButton class]]) {
             CGPoint buttonPoint = [self convertPoint:point toView:subview];
-//            if (CGRectContainsPoint(subview.bounds, buttonPoint)) {
-//                //判断如果这个新的点是在中间按钮身上，那么处理点击事件最合适的view就是中间按钮d
-//
-//            }
             
             //判断如果这个新的点是在中间按钮身上，那么处理点击事件最合适的view就是中间按钮
-                  if ( [subview pointInside:buttonPoint withEvent:event]) {
-                      return subview;
-                  }
-           
+            if ( [subview pointInside:buttonPoint withEvent:event]) {
+                return subview;
+            }
             
+            /*等价
+             CGRect frame =subview.frame;
+             UIView *vv = subview;
+             while (vv.superview && ![vv.superview isKindOfClass:[HistTestViewRed class]]) {
+             frame.origin.x += vv.frameX;
+             frame.origin.y += vv.frameY;
+             vv = vv.superview;
+             }
+             
+             if (CGRectContainsPoint(frame, point)) {
+             return subview;
+             }
+             */
             NSLog(@"Red___222_%@",NSStringFromCGPoint(buttonPoint));
-
-//            CGPoint buttonPoint = [self convertPoint:point toView:subview];
-
+            
+            
         }
     }
     
-   
+    
     
     
     
@@ -65,7 +73,7 @@
             //还原坐标 等价
             //              CGPoint convertedPoint2 = [self convertPoint:convertedPoint1 fromView:subview];
             //                CGPoint convertedPoint3 = [subview convertPoint:convertedPoint1 toView:self];
-
+            
             //如果有子试图命中测试
             UIView *hitTestView = [subview hitTest:convertedPoint withEvent:event];
             if (hitTestView) {
@@ -84,14 +92,14 @@
 //只有命中测试返回了自己才会执行touch方法
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     NSLog(@"Touc************Red");
-
+    
 }
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 @end
